@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		63DF6FE729220F44003DC985 /* VideoChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF6FE629220F44003DC985 /* VideoChatApp.swift */; };
+		63DF6FE929220F44003DC985 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF6FE829220F44003DC985 /* ContentView.swift */; };
+		63DF6FEB29220F44003DC985 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63DF6FEA29220F44003DC985 /* Assets.xcassets */; };
+		63DF6FEE29220F44003DC985 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63DF6FED29220F44003DC985 /* Preview Assets.xcassets */; };
+		63DF6FF829220F44003DC985 /* VideoChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF6FF729220F44003DC985 /* VideoChatTests.swift */; };
+		63DF700229220F44003DC985 /* VideoChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF700129220F44003DC985 /* VideoChatUITests.swift */; };
+		63DF700429220F44003DC985 /* VideoChatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF700329220F44003DC985 /* VideoChatUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		63DF6FF429220F44003DC985 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DF6FDB29220F44003DC985 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63DF6FE229220F44003DC985;
+			remoteInfo = VideoChat;
+		};
+		63DF6FFE29220F44003DC985 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DF6FDB29220F44003DC985 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63DF6FE229220F44003DC985;
+			remoteInfo = VideoChat;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		63DF6FE329220F44003DC985 /* VideoChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63DF6FE629220F44003DC985 /* VideoChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoChatApp.swift; sourceTree = "<group>"; };
+		63DF6FE829220F44003DC985 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		63DF6FEA29220F44003DC985 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		63DF6FED29220F44003DC985 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		63DF6FF329220F44003DC985 /* VideoChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VideoChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63DF6FF729220F44003DC985 /* VideoChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoChatTests.swift; sourceTree = "<group>"; };
+		63DF6FFD29220F44003DC985 /* VideoChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VideoChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63DF700129220F44003DC985 /* VideoChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoChatUITests.swift; sourceTree = "<group>"; };
+		63DF700329220F44003DC985 /* VideoChatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoChatUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		63DF6FE029220F44003DC985 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63DF6FF029220F44003DC985 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63DF6FFA29220F44003DC985 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		63DF6FDA29220F44003DC985 = {
+			isa = PBXGroup;
+			children = (
+				63DF6FE529220F44003DC985 /* VideoChat */,
+				63DF6FF629220F44003DC985 /* VideoChatTests */,
+				63DF700029220F44003DC985 /* VideoChatUITests */,
+				63DF6FE429220F44003DC985 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		63DF6FE429220F44003DC985 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				63DF6FE329220F44003DC985 /* VideoChat.app */,
+				63DF6FF329220F44003DC985 /* VideoChatTests.xctest */,
+				63DF6FFD29220F44003DC985 /* VideoChatUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		63DF6FE529220F44003DC985 /* VideoChat */ = {
+			isa = PBXGroup;
+			children = (
+				63DF6FE629220F44003DC985 /* VideoChatApp.swift */,
+				63DF6FE829220F44003DC985 /* ContentView.swift */,
+				63DF6FEA29220F44003DC985 /* Assets.xcassets */,
+				63DF6FEC29220F44003DC985 /* Preview Content */,
+			);
+			path = VideoChat;
+			sourceTree = "<group>";
+		};
+		63DF6FEC29220F44003DC985 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				63DF6FED29220F44003DC985 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		63DF6FF629220F44003DC985 /* VideoChatTests */ = {
+			isa = PBXGroup;
+			children = (
+				63DF6FF729220F44003DC985 /* VideoChatTests.swift */,
+			);
+			path = VideoChatTests;
+			sourceTree = "<group>";
+		};
+		63DF700029220F44003DC985 /* VideoChatUITests */ = {
+			isa = PBXGroup;
+			children = (
+				63DF700129220F44003DC985 /* VideoChatUITests.swift */,
+				63DF700329220F44003DC985 /* VideoChatUITestsLaunchTests.swift */,
+			);
+			path = VideoChatUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		63DF6FE229220F44003DC985 /* VideoChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63DF700729220F44003DC985 /* Build configuration list for PBXNativeTarget "VideoChat" */;
+			buildPhases = (
+				63DF6FDF29220F44003DC985 /* Sources */,
+				63DF6FE029220F44003DC985 /* Frameworks */,
+				63DF6FE129220F44003DC985 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VideoChat;
+			productName = VideoChat;
+			productReference = 63DF6FE329220F44003DC985 /* VideoChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		63DF6FF229220F44003DC985 /* VideoChatTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63DF700A29220F44003DC985 /* Build configuration list for PBXNativeTarget "VideoChatTests" */;
+			buildPhases = (
+				63DF6FEF29220F44003DC985 /* Sources */,
+				63DF6FF029220F44003DC985 /* Frameworks */,
+				63DF6FF129220F44003DC985 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63DF6FF529220F44003DC985 /* PBXTargetDependency */,
+			);
+			name = VideoChatTests;
+			productName = VideoChatTests;
+			productReference = 63DF6FF329220F44003DC985 /* VideoChatTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		63DF6FFC29220F44003DC985 /* VideoChatUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63DF700D29220F44003DC985 /* Build configuration list for PBXNativeTarget "VideoChatUITests" */;
+			buildPhases = (
+				63DF6FF929220F44003DC985 /* Sources */,
+				63DF6FFA29220F44003DC985 /* Frameworks */,
+				63DF6FFB29220F44003DC985 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63DF6FFF29220F44003DC985 /* PBXTargetDependency */,
+			);
+			name = VideoChatUITests;
+			productName = VideoChatUITests;
+			productReference = 63DF6FFD29220F44003DC985 /* VideoChatUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		63DF6FDB29220F44003DC985 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					63DF6FE229220F44003DC985 = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
+					63DF6FF229220F44003DC985 = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = 63DF6FE229220F44003DC985;
+					};
+					63DF6FFC29220F44003DC985 = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = 63DF6FE229220F44003DC985;
+					};
+				};
+			};
+			buildConfigurationList = 63DF6FDE29220F44003DC985 /* Build configuration list for PBXProject "VideoChat" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 63DF6FDA29220F44003DC985;
+			productRefGroup = 63DF6FE429220F44003DC985 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				63DF6FE229220F44003DC985 /* VideoChat */,
+				63DF6FF229220F44003DC985 /* VideoChatTests */,
+				63DF6FFC29220F44003DC985 /* VideoChatUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		63DF6FE129220F44003DC985 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63DF6FEE29220F44003DC985 /* Preview Assets.xcassets in Resources */,
+				63DF6FEB29220F44003DC985 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63DF6FF129220F44003DC985 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63DF6FFB29220F44003DC985 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		63DF6FDF29220F44003DC985 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63DF6FE929220F44003DC985 /* ContentView.swift in Sources */,
+				63DF6FE729220F44003DC985 /* VideoChatApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63DF6FEF29220F44003DC985 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63DF6FF829220F44003DC985 /* VideoChatTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63DF6FF929220F44003DC985 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63DF700429220F44003DC985 /* VideoChatUITestsLaunchTests.swift in Sources */,
+				63DF700229220F44003DC985 /* VideoChatUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		63DF6FF529220F44003DC985 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63DF6FE229220F44003DC985 /* VideoChat */;
+			targetProxy = 63DF6FF429220F44003DC985 /* PBXContainerItemProxy */;
+		};
+		63DF6FFF29220F44003DC985 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63DF6FE229220F44003DC985 /* VideoChat */;
+			targetProxy = 63DF6FFE29220F44003DC985 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		63DF700529220F44003DC985 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		63DF700629220F44003DC985 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		63DF700829220F44003DC985 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"VideoChat/Preview Content\"";
+				DEVELOPMENT_TEAM = SRX8EYEP5K;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = grzegorz.VideoChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		63DF700929220F44003DC985 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"VideoChat/Preview Content\"";
+				DEVELOPMENT_TEAM = SRX8EYEP5K;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = grzegorz.VideoChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		63DF700B29220F44003DC985 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SRX8EYEP5K;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = grzegorz.VideoChatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VideoChat.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VideoChat";
+			};
+			name = Debug;
+		};
+		63DF700C29220F44003DC985 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SRX8EYEP5K;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = grzegorz.VideoChatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VideoChat.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VideoChat";
+			};
+			name = Release;
+		};
+		63DF700E29220F44003DC985 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SRX8EYEP5K;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = grzegorz.VideoChatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = VideoChat;
+			};
+			name = Debug;
+		};
+		63DF700F29220F44003DC985 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SRX8EYEP5K;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = grzegorz.VideoChatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = VideoChat;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		63DF6FDE29220F44003DC985 /* Build configuration list for PBXProject "VideoChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63DF700529220F44003DC985 /* Debug */,
+				63DF700629220F44003DC985 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63DF700729220F44003DC985 /* Build configuration list for PBXNativeTarget "VideoChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63DF700829220F44003DC985 /* Debug */,
+				63DF700929220F44003DC985 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63DF700A29220F44003DC985 /* Build configuration list for PBXNativeTarget "VideoChatTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63DF700B29220F44003DC985 /* Debug */,
+				63DF700C29220F44003DC985 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63DF700D29220F44003DC985 /* Build configuration list for PBXNativeTarget "VideoChatUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63DF700E29220F44003DC985 /* Debug */,
+				63DF700F29220F44003DC985 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 63DF6FDB29220F44003DC985 /* Project object */;
+}
