@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		3B94379B8B72B7A7B8186DED /* Pods_VideoChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F084394B1E85A60EE9284E80 /* Pods_VideoChatTests.framework */; };
+		6301B150292CA5F400D38EE2 /* FirebaseKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6301B14F292CA5F400D38EE2 /* FirebaseKeys.swift */; };
+		6328FB2D292B51E600441757 /* WebRTCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6328FB2C292B51E600441757 /* WebRTCClient.swift */; };
+		6328FB2F292B51F100441757 /* SignalingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6328FB2E292B51F100441757 /* SignalingClient.swift */; };
+		6328FB31292B542B00441757 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6328FB30292B542B00441757 /* Config.swift */; };
+		6328FB33292B545C00441757 /* SessionDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6328FB32292B545C00441757 /* SessionDescription.swift */; };
+		6328FB35292B546500441757 /* IceCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6328FB34292B546500441757 /* IceCandidate.swift */; };
 		63434E2E292913100025E289 /* VideoChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63434E2D292913100025E289 /* VideoChatRepository.swift */; };
 		63434E31292918A00025E289 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63434E30292918A00025E289 /* ChatRoom.swift */; };
 		63434E3429291D3B0025E289 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 63434E3329291D3B0025E289 /* FirebaseAnalytics */; };
@@ -50,6 +56,12 @@
 
 /* Begin PBXFileReference section */
 		4C7AB074EC716116969E054A /* Pods-VideoChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoChat.release.xcconfig"; path = "Target Support Files/Pods-VideoChat/Pods-VideoChat.release.xcconfig"; sourceTree = "<group>"; };
+		6301B14F292CA5F400D38EE2 /* FirebaseKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseKeys.swift; sourceTree = "<group>"; };
+		6328FB2C292B51E600441757 /* WebRTCClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRTCClient.swift; sourceTree = "<group>"; };
+		6328FB2E292B51F100441757 /* SignalingClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalingClient.swift; sourceTree = "<group>"; };
+		6328FB30292B542B00441757 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		6328FB32292B545C00441757 /* SessionDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDescription.swift; sourceTree = "<group>"; };
+		6328FB34292B546500441757 /* IceCandidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IceCandidate.swift; sourceTree = "<group>"; };
 		63434E2D292913100025E289 /* VideoChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoChatRepository.swift; sourceTree = "<group>"; };
 		63434E30292918A00025E289 /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		6390D39A2924235800E92FD7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -110,11 +122,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6328FB2B292B51B300441757 /* WebRTC */ = {
+			isa = PBXGroup;
+			children = (
+				6328FB30292B542B00441757 /* Config.swift */,
+				6328FB32292B545C00441757 /* SessionDescription.swift */,
+				6328FB2E292B51F100441757 /* SignalingClient.swift */,
+				6328FB34292B546500441757 /* IceCandidate.swift */,
+				6328FB2C292B51E600441757 /* WebRTCClient.swift */,
+			);
+			path = WebRTC;
+			sourceTree = "<group>";
+		};
 		63434E2F292914220025E289 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				63434E2D292913100025E289 /* VideoChatRepository.swift */,
 				63434E30292918A00025E289 /* ChatRoom.swift */,
+				6301B14F292CA5F400D38EE2 /* FirebaseKeys.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -144,6 +169,7 @@
 		63DF6FE529220F44003DC985 /* VideoChat */ = {
 			isa = PBXGroup;
 			children = (
+				6328FB2B292B51B300441757 /* WebRTC */,
 				63434E2F292914220025E289 /* Data */,
 				6390D39A2924235800E92FD7 /* GoogleService-Info.plist */,
 				63DF6FE629220F44003DC985 /* VideoChatApp.swift */,
@@ -457,8 +483,14 @@
 			files = (
 				63F22DB1292A5983005BE0A2 /* JoinChatRoom.swift in Sources */,
 				63DF6FE929220F44003DC985 /* ContentView.swift in Sources */,
+				6328FB2F292B51F100441757 /* SignalingClient.swift in Sources */,
+				6328FB35292B546500441757 /* IceCandidate.swift in Sources */,
 				63DF6FE729220F44003DC985 /* VideoChatApp.swift in Sources */,
+				6328FB31292B542B00441757 /* Config.swift in Sources */,
+				6301B150292CA5F400D38EE2 /* FirebaseKeys.swift in Sources */,
 				63F22DAF292A591A005BE0A2 /* CreateChatRoom.swift in Sources */,
+				6328FB2D292B51E600441757 /* WebRTCClient.swift in Sources */,
+				6328FB33292B545C00441757 /* SessionDescription.swift in Sources */,
 				63434E31292918A00025E289 /* ChatRoom.swift in Sources */,
 				63F22DB7292AB20C005BE0A2 /* GuestView.swift in Sources */,
 				63434E2E292913100025E289 /* VideoChatRepository.swift in Sources */,

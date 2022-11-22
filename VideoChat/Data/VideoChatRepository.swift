@@ -12,14 +12,11 @@ import FirebaseFirestoreSwift
 class VideoChatRepository {
     
     private let db = Firestore.firestore()
-    private let roomsCollectionPath = "rooms"
-    private let roomCollectionNameKey = "name"
-    private let roomCollectionIdKey = "id"
     
     func createChatRoom(chatRoomName: String) async throws {
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
-            db.collection(roomsCollectionPath).addDocument(data: [
-                roomCollectionNameKey : chatRoomName
+            db.collection(FirebaseKeys.roomsCollectionPath).addDocument(data: [
+                FirebaseKeys.roomCollectionNameKey : chatRoomName
             ]) { err in
                 if let err = err {
                     continuation.resume(throwing: err)
@@ -32,7 +29,7 @@ class VideoChatRepository {
     
     func getChatRooms() -> AsyncThrowingStream<[(String, ChatRoom)], Error> {
         AsyncThrowingStream { continuation in
-            db.collection(roomsCollectionPath).addSnapshotListener { snapshot, error in
+            db.collection(FirebaseKeys.roomsCollectionPath).addSnapshotListener { snapshot, error in
                 if let snapshot = snapshot {
                     var lst: [(String, ChatRoom)] = []
                     snapshot.documents.forEach { doc in
