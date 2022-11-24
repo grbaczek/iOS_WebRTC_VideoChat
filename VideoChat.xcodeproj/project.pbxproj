@@ -22,6 +22,7 @@
 		63434E3A29291D3B0025E289 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 63434E3929291D3B0025E289 /* FirebaseFirestore */; };
 		63434E3C29291D3B0025E289 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 63434E3B29291D3B0025E289 /* FirebaseFirestoreSwift */; };
 		6390D39B2924235800E92FD7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6390D39A2924235800E92FD7 /* GoogleService-Info.plist */; };
+		63A249D5292F4577009EE080 /* WebRTCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A249D4292F4577009EE080 /* WebRTCManager.swift */; };
 		63DF6FE729220F44003DC985 /* VideoChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF6FE629220F44003DC985 /* VideoChatApp.swift */; };
 		63DF6FE929220F44003DC985 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF6FE829220F44003DC985 /* ContentView.swift */; };
 		63DF6FEB29220F44003DC985 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63DF6FEA29220F44003DC985 /* Assets.xcassets */; };
@@ -65,6 +66,7 @@
 		63434E2D292913100025E289 /* VideoChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoChatRepository.swift; sourceTree = "<group>"; };
 		63434E30292918A00025E289 /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		6390D39A2924235800E92FD7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		63A249D4292F4577009EE080 /* WebRTCManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRTCManager.swift; sourceTree = "<group>"; };
 		63DF6FE329220F44003DC985 /* VideoChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63DF6FE629220F44003DC985 /* VideoChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoChatApp.swift; sourceTree = "<group>"; };
 		63DF6FE829220F44003DC985 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		6328FB2B292B51B300441757 /* WebRTC */ = {
 			isa = PBXGroup;
 			children = (
+				63A249D4292F4577009EE080 /* WebRTCManager.swift */,
 				6328FB30292B542B00441757 /* Config.swift */,
 				6328FB32292B545C00441757 /* SessionDescription.swift */,
 				6328FB2E292B51F100441757 /* SignalingClient.swift */,
@@ -494,6 +497,7 @@
 				63434E31292918A00025E289 /* ChatRoom.swift in Sources */,
 				63F22DB7292AB20C005BE0A2 /* GuestView.swift in Sources */,
 				63434E2E292913100025E289 /* VideoChatRepository.swift in Sources */,
+				63A249D5292F4577009EE080 /* WebRTCManager.swift in Sources */,
 				63F22DB5292AB1FB005BE0A2 /* HostView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

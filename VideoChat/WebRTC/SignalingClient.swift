@@ -15,7 +15,7 @@ class SignalingClient {
         case documentEmpty
     }
 
-    private let testCollection = "test"
+    private let chatRoomCollection = "rooms"
     private let sdpDocument = "sdp"
     private let candidatesDocument = "candidates"
     private let candidateCollection = "candidate"
@@ -126,22 +126,22 @@ class SignalingClient {
             }
         }
     }
-    private func getCandidatesCollection(_ collection: String, _ testId: String) -> CollectionReference {
-        getCandidatesDocument(collection, testId)
+    private func getCandidatesCollection(_ collection: String, _ roomId: String) -> CollectionReference {
+        getCandidatesDocument(collection, roomId)
             .collection(candidateCollection)
     }
-    private func getSpdDocument(_ collection: String, _ testId: String) -> DocumentReference {
-        getTestCollection(collection, testId)
+    private func getSpdDocument(_ collection: String, _ roomId: String) -> DocumentReference {
+        getTestCollection(collection, roomId)
             .document(sdpDocument)
     }
-    private func getCandidatesDocument(_ collection: String, _ testId: String) -> DocumentReference {
-        getTestCollection(collection, testId)
+    private func getCandidatesDocument(_ collection: String, _ roomId: String) -> DocumentReference {
+        getTestCollection(collection, roomId)
             .document(candidatesDocument)
     }
-    private func getTestCollection(_ collection: String, _ testId: String) -> CollectionReference {
+    private func getTestCollection(_ collection: String, _ roomId: String) -> CollectionReference {
         db
-            .collection(testCollection)
-            .document(testId)
+            .collection(chatRoomCollection)
+            .document(roomId)
             .collection(collection)
     }
 }

@@ -11,7 +11,7 @@ import CoreMedia
 import Foundation
 import WebRTC
 
-class WebRTCClientAsync: NSObject {
+class WebRTCClient: NSObject {
     enum peerConnectionError: Error {
         case peerConnectionNotInitialized
         case sdpNull
@@ -113,7 +113,7 @@ class WebRTCClientAsync: NSObject {
         let constraints = RTCMediaConstraints(
             mandatoryConstraints: nil,
             optionalConstraints: ["DtlsSrtpKeyAgreement": kRTCMediaConstraintsValueTrue])
-        self.peerConnection = WebRTCClientAsync.factory.peerConnection(
+        self.peerConnection = WebRTCClient.factory.peerConnection(
             with: config,
             constraints: constraints,
             delegate: self)
@@ -233,20 +233,20 @@ class WebRTCClientAsync: NSObject {
 
     private func createAudioTrack() -> RTCAudioTrack {
         let audioConstrains = RTCMediaConstraints(mandatoryConstraints: nil, optionalConstraints: nil)
-        let audioSource = WebRTCClientAsync.factory.audioSource(with: audioConstrains)
-        let audioTrack = WebRTCClientAsync.factory.audioTrack(with: audioSource, trackId: "audio0")
+        let audioSource = WebRTCClient.factory.audioSource(with: audioConstrains)
+        let audioTrack = WebRTCClient.factory.audioTrack(with: audioSource, trackId: "audio0")
         return audioTrack
     }
 
     private func createVideoTrack() -> RTCVideoTrack {
-        let videoSource = WebRTCClientAsync.factory.videoSource()
+        let videoSource = WebRTCClient.factory.videoSource()
         //self.videoCapturer = RTCCustomFrameCapturer(delegate: videoSource)
-        let videoTrack = WebRTCClientAsync.factory.videoTrack(with: videoSource, trackId: "video0")
+        let videoTrack = WebRTCClient.factory.videoTrack(with: videoSource, trackId: "video0")
         return videoTrack
     }
 }
 
-extension WebRTCClientAsync: RTCPeerConnectionDelegate {
+extension WebRTCClient: RTCPeerConnectionDelegate {
     func peerConnection(_ peerConnection: RTCPeerConnection, didChange stateChanged: RTCSignalingState) {}
     func peerConnection(_ peerConnection: RTCPeerConnection, didAdd stream: RTCMediaStream) {
     }
@@ -266,7 +266,7 @@ extension WebRTCClientAsync: RTCPeerConnectionDelegate {
     }
 }
 
-extension WebRTCClientAsync {
+extension WebRTCClient {
     private func setTrackEnabled<T: RTCMediaStreamTrack>(_ type: T.Type, isEnabled: Bool) {
         guard let peerConnection = peerConnection else { return }
         peerConnection.transceivers
@@ -276,7 +276,7 @@ extension WebRTCClientAsync {
 }
 
 // MARK: - Video control
-extension WebRTCClientAsync {
+extension WebRTCClient {
     func hideVideo() {
         self.setVideoEnabled(false)
     }
@@ -289,7 +289,7 @@ extension WebRTCClientAsync {
 }
 
 // MARK: - Audio control
-extension WebRTCClientAsync {
+extension WebRTCClient {
     func muteAudio() {
         self.setAudioEnabled(false)
     }
