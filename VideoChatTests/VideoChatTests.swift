@@ -10,7 +10,7 @@ import XCTest
 
 final class VideoChatTests: XCTestCase {
 
-    private let testId = "tJn71g0Bi3uh5s7V9cQT"
+    private let testId = "QfX1WtbTsGgtQWj7jxye"
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -26,7 +26,7 @@ final class VideoChatTests: XCTestCase {
             print("facilitator and tester connected - \(i)")
         }
     }
-    func facilitatorConnectingFirst() async throws {
+    /*func facilitatorConnectingFirst() async throws {
         await simulateConnection(testId, testerDelaySec: Int.random(in: 1...5))
     }
     func testFacilitatorConnectingFirst() async throws {
@@ -102,17 +102,17 @@ final class VideoChatTests: XCTestCase {
                 print("\(i) facilitator and tester connected - peerReconnected presenter")
             }
         }
-    }
+    }*/
     private func simulateConnection(_ testId: String, facilitatorDelaySec: Int = 0, testerDelaySec: Int = 0) async {
         let testerWebRTCManager = WebRTCManager()
         let facilitatorWebRTCManager = WebRTCManager()
         let t = Task {
             try await Task.sleep(nanoseconds: 1_000_000_000 * UInt64(facilitatorDelaySec))
-            await testerWebRTCManager.retryConnect(testId: testId, currentPeer: WebRTCManager.peer.presenter)
+            await testerWebRTCManager.retryConnect(testId: testId, currentPeer: WebRTCManager.peer.guest)
         }
         let t2 = Task {
-            try await Task.sleep(nanoseconds: 1_000_000_000 * UInt64(testerDelaySec))
-            await facilitatorWebRTCManager.retryConnect(testId: testId, currentPeer: WebRTCManager.peer.receiver)
+            /*try await Task.sleep(nanoseconds: 1_000_000_000 * UInt64(testerDelaySec))
+            await facilitatorWebRTCManager.retryConnect(testId: testId, currentPeer: WebRTCManager.peer.host)*/
         }
         let t3 = Task {
             for await connectionState in testerWebRTCManager.connectionState {
@@ -133,7 +133,7 @@ final class VideoChatTests: XCTestCase {
         await t3.value
         await t4.value
     }
-    private func simulateInterruptedConnection(_ testId: String, facilitatorDelaySec: Int = 0, testerDelaySec: Int = 0, interruptedPeer: WebRTCManager.peer) async throws {
+    /*private func simulateInterruptedConnection(_ testId: String, facilitatorDelaySec: Int = 0, testerDelaySec: Int = 0, interruptedPeer: WebRTCManager.peer) async throws {
         let testerWebRTCManager = WebRTCManager()
         let facilitatorWebRTCManager = WebRTCManager()
         let connectPeer: (WebRTCManager.peer, Int) async throws -> Void = { peer, delaySec in
@@ -191,7 +191,7 @@ final class VideoChatTests: XCTestCase {
         }
         try await t6.value
         try await t7.value
-    }
+    }*/
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         measure {

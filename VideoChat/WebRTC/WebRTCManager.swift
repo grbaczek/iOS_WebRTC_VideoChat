@@ -59,11 +59,7 @@ public class WebRTCManager {
     private var connectionStateContainer = ConnectionStateContainer()
     private var webRTCClient: WebRTCClient?
 
-    init() {
-        UIApplication.shared.isIdleTimerDisabled = true
-    }
     deinit {
-        UIApplication.shared.isIdleTimerDisabled = false
         print("WebRTCManager deinit")
     }
 

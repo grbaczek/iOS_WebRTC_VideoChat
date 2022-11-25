@@ -21,7 +21,6 @@
 		63434E3829291D3B0025E289 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 63434E3729291D3B0025E289 /* FirebaseCrashlytics */; };
 		63434E3A29291D3B0025E289 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 63434E3929291D3B0025E289 /* FirebaseFirestore */; };
 		63434E3C29291D3B0025E289 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 63434E3B29291D3B0025E289 /* FirebaseFirestoreSwift */; };
-		6390D39B2924235800E92FD7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6390D39A2924235800E92FD7 /* GoogleService-Info.plist */; };
 		63A249D5292F4577009EE080 /* WebRTCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A249D4292F4577009EE080 /* WebRTCManager.swift */; };
 		63DF6FE729220F44003DC985 /* VideoChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF6FE629220F44003DC985 /* VideoChatApp.swift */; };
 		63DF6FE929220F44003DC985 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF6FE829220F44003DC985 /* ContentView.swift */; };
@@ -34,6 +33,9 @@
 		63F22DB1292A5983005BE0A2 /* JoinChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F22DB0292A5983005BE0A2 /* JoinChatRoom.swift */; };
 		63F22DB5292AB1FB005BE0A2 /* HostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F22DB4292AB1FB005BE0A2 /* HostView.swift */; };
 		63F22DB7292AB20C005BE0A2 /* GuestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F22DB6292AB20C005BE0A2 /* GuestView.swift */; };
+		63FC49B02930978B0080BAD2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63FC49AF2930978B0080BAD2 /* GoogleService-Info.plist */; };
+		63FC49B12930978B0080BAD2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63FC49AF2930978B0080BAD2 /* GoogleService-Info.plist */; };
+		63FC49B329309A200080BAD2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 63FC49B229309A200080BAD2 /* FirebaseFirestore */; };
 		CA310065D6E9F8637C1F8DFB /* Pods_VideoChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A011279F34584F4DBA0C9D92 /* Pods_VideoChat.framework */; };
 		CF2E93C572BA9942E0DBD3C3 /* Pods_VideoChat_VideoChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35D26761F57A9A7BD5DDBAF /* Pods_VideoChat_VideoChatUITests.framework */; };
 /* End PBXBuildFile section */
@@ -65,7 +67,6 @@
 		6328FB34292B546500441757 /* IceCandidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IceCandidate.swift; sourceTree = "<group>"; };
 		63434E2D292913100025E289 /* VideoChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoChatRepository.swift; sourceTree = "<group>"; };
 		63434E30292918A00025E289 /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
-		6390D39A2924235800E92FD7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		63A249D4292F4577009EE080 /* WebRTCManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRTCManager.swift; sourceTree = "<group>"; };
 		63DF6FE329220F44003DC985 /* VideoChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63DF6FE629220F44003DC985 /* VideoChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoChatApp.swift; sourceTree = "<group>"; };
@@ -81,6 +82,7 @@
 		63F22DB0292A5983005BE0A2 /* JoinChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChatRoom.swift; sourceTree = "<group>"; };
 		63F22DB4292AB1FB005BE0A2 /* HostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostView.swift; sourceTree = "<group>"; };
 		63F22DB6292AB20C005BE0A2 /* GuestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestView.swift; sourceTree = "<group>"; };
+		63FC49AF2930978B0080BAD2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7B2FA7D56E17A7C61FA2EB19 /* Pods-VideoChat-VideoChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoChat-VideoChatUITests.debug.xcconfig"; path = "Target Support Files/Pods-VideoChat-VideoChatUITests/Pods-VideoChat-VideoChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		869D771D06A3FAEBD5D2F173 /* Pods-VideoChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoChatTests.release.xcconfig"; path = "Target Support Files/Pods-VideoChatTests/Pods-VideoChatTests.release.xcconfig"; sourceTree = "<group>"; };
 		9F5E7FEE937A2D5C38D4EA7A /* Pods-VideoChat-VideoChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoChat-VideoChatUITests.release.xcconfig"; path = "Target Support Files/Pods-VideoChat-VideoChatUITests/Pods-VideoChat-VideoChatUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B94379B8B72B7A7B8186DED /* Pods_VideoChatTests.framework in Frameworks */,
+				63FC49B329309A200080BAD2 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,9 +175,9 @@
 		63DF6FE529220F44003DC985 /* VideoChat */ = {
 			isa = PBXGroup;
 			children = (
+				63FC49AF2930978B0080BAD2 /* GoogleService-Info.plist */,
 				6328FB2B292B51B300441757 /* WebRTC */,
 				63434E2F292914220025E289 /* Data */,
-				6390D39A2924235800E92FD7 /* GoogleService-Info.plist */,
 				63DF6FE629220F44003DC985 /* VideoChatApp.swift */,
 				63DF6FE829220F44003DC985 /* ContentView.swift */,
 				63DF6FEA29220F44003DC985 /* Assets.xcassets */,
@@ -279,6 +282,9 @@
 				63DF6FF529220F44003DC985 /* PBXTargetDependency */,
 			);
 			name = VideoChatTests;
+			packageProductDependencies = (
+				63FC49B229309A200080BAD2 /* FirebaseFirestore */,
+			);
 			productName = VideoChatTests;
 			productReference = 63DF6FF329220F44003DC985 /* VideoChatTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -356,7 +362,7 @@
 			files = (
 				63DF6FEE29220F44003DC985 /* Preview Assets.xcassets in Resources */,
 				63DF6FEB29220F44003DC985 /* Assets.xcassets in Resources */,
-				6390D39B2924235800E92FD7 /* GoogleService-Info.plist in Resources */,
+				63FC49B02930978B0080BAD2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +370,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63FC49B12930978B0080BAD2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -866,6 +873,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 63434E3229291D3B0025E289 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
+		};
+		63FC49B229309A200080BAD2 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63434E3229291D3B0025E289 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
