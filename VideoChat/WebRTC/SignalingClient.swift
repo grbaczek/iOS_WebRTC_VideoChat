@@ -28,16 +28,15 @@ class SignalingClient {
         AsyncThrowingStream { continuation in
             let listener = getSpdDocument(collection, testId)
                 .addSnapshotListener { documentSnapshot, error in
-                    if let document = documentSnapshot {
+                    if let document = documentSnapshot,
+                       let _ = document.data()
+                    {
                         do {
-                        
                             let sessionDescription: SessionDescription = try document.data(as: SessionDescription.self)
                             continuation.yield(sessionDescription.rtcSessionDescription)
                         } catch {
                             continuation.finish(throwing: error)
                         }
-                    } else {
-                        continuation.finish(throwing: DocumentSnapshotError.documentEmpty)
                     }
                 }
             continuation.onTermination = { _ in
@@ -131,14 +130,14 @@ class SignalingClient {
             .collection(candidateCollection)
     }
     private func getSpdDocument(_ collection: String, _ roomId: String) -> DocumentReference {
-        getTestCollection(collection, roomId)
+        getChatRoomCollection(collection, roomId)
             .document(sdpDocument)
     }
     private func getCandidatesDocument(_ collection: String, _ roomId: String) -> DocumentReference {
-        getTestCollection(collection, roomId)
+        getChatRoomCollection(collection, roomId)
             .document(candidatesDocument)
     }
-    private func getTestCollection(_ collection: String, _ roomId: String) -> CollectionReference {
+    private func getChatRoomCollection(_ collection: String, _ roomId: String) -> CollectionReference {
         db
             .collection(chatRoomCollection)
             .document(roomId)

@@ -26,9 +26,9 @@ public class WebRTCManager {
         var watchKey: String {
             switch self {
             case .guest:
-                return "guest"
-            case .host:
                 return "host"
+            case .host:
+                return "guest"
             }
         }
     }

@@ -10,7 +10,7 @@ import XCTest
 
 final class VideoChatTests: XCTestCase {
 
-    private let testId = "QfX1WtbTsGgtQWj7jxye"
+    private let testId = "ri13j5tHOzW08K3xUVFd"
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -26,7 +26,7 @@ final class VideoChatTests: XCTestCase {
             print("facilitator and tester connected - \(i)")
         }
     }
-    /*func facilitatorConnectingFirst() async throws {
+    func facilitatorConnectingFirst() async throws {
         await simulateConnection(testId, testerDelaySec: Int.random(in: 1...5))
     }
     func testFacilitatorConnectingFirst() async throws {
@@ -47,31 +47,31 @@ final class VideoChatTests: XCTestCase {
     func peerReconnected(facilitatorDelaySec: Int = 0, testerDelaySec: Int = 0, interruptedPeer: WebRTCManager.peer) async throws {
         try await simulateInterruptedConnection(
             testId,
-            facilitatorDelaySec: facilitatorDelaySec,
-            testerDelaySec: testerDelaySec,
+            hostDelaySec: facilitatorDelaySec,
+            guestDelaySec: testerDelaySec,
             interruptedPeer: interruptedPeer)
     }
-    func testTesterDisconnected() async throws {
-        for i in 1...100 {
+    func testHostDisconnected() async throws {
+        for i in 1...10 {
             try await peerReconnected(
                 facilitatorDelaySec: Int.random(in: 1...5),
                 testerDelaySec: Int.random(in: 1...5),
-                interruptedPeer: WebRTCManager.peer.receiver)
+                interruptedPeer: WebRTCManager.peer.host)
             print("facilitator and tester connected - \(i)")
         }
     }
 
-    func testFacilitatorDisconnected() async throws {
-        for i in 1...100 {
+    func testGuestDisconnected() async throws {
+        for i in 1...10 {
             try await peerReconnected(
                 facilitatorDelaySec: Int.random(in: 1...5),
                 testerDelaySec: Int.random(in: 1...5),
-                interruptedPeer: WebRTCManager.peer.presenter)
+                interruptedPeer: WebRTCManager.peer.guest)
             print("facilitator and tester connected - \(i)")
         }
     }
     func testRandomConnectionScheme() async throws {
-        for i in 1...100 {
+        for i in 1...10 {
             let randomTestCase = Int.random(in: 1...5)
             switch randomTestCase {
             case 1:
@@ -91,18 +91,18 @@ final class VideoChatTests: XCTestCase {
                 try await peerReconnected(
                     facilitatorDelaySec: Int.random(in: 1...5),
                     testerDelaySec: Int.random(in: 1...5),
-                    interruptedPeer: WebRTCManager.peer.receiver)
+                    interruptedPeer: WebRTCManager.peer.guest)
                 print("\(i) facilitator and tester connected - peerReconnected receiver")
             default:
                 print("\(i) facilitator and tester peerReconnected presenter")
                 try await peerReconnected(
                     facilitatorDelaySec: Int.random(in: 1...5),
                     testerDelaySec: Int.random(in: 1...5),
-                    interruptedPeer: WebRTCManager.peer.presenter)
+                    interruptedPeer: WebRTCManager.peer.host)
                 print("\(i) facilitator and tester connected - peerReconnected presenter")
             }
         }
-    }*/
+    }
     private func simulateConnection(_ testId: String, facilitatorDelaySec: Int = 0, testerDelaySec: Int = 0) async {
         let testerWebRTCManager = WebRTCManager()
         let facilitatorWebRTCManager = WebRTCManager()
@@ -111,8 +111,8 @@ final class VideoChatTests: XCTestCase {
             await testerWebRTCManager.retryConnect(testId: testId, currentPeer: WebRTCManager.peer.guest)
         }
         let t2 = Task {
-            /*try await Task.sleep(nanoseconds: 1_000_000_000 * UInt64(testerDelaySec))
-            await facilitatorWebRTCManager.retryConnect(testId: testId, currentPeer: WebRTCManager.peer.host)*/
+            try await Task.sleep(nanoseconds: 1_000_000_000 * UInt64(testerDelaySec))
+            await facilitatorWebRTCManager.retryConnect(testId: testId, currentPeer: WebRTCManager.peer.host)
         }
         let t3 = Task {
             for await connectionState in testerWebRTCManager.connectionState {
@@ -133,16 +133,16 @@ final class VideoChatTests: XCTestCase {
         await t3.value
         await t4.value
     }
-    /*private func simulateInterruptedConnection(_ testId: String, facilitatorDelaySec: Int = 0, testerDelaySec: Int = 0, interruptedPeer: WebRTCManager.peer) async throws {
-        let testerWebRTCManager = WebRTCManager()
-        let facilitatorWebRTCManager = WebRTCManager()
+    private func simulateInterruptedConnection(_ testId: String, hostDelaySec: Int = 0, guestDelaySec: Int = 0, interruptedPeer: WebRTCManager.peer) async throws {
+        let guestWebRTCManager = WebRTCManager()
+        let hostWebRTCManager = WebRTCManager()
         let connectPeer: (WebRTCManager.peer, Int) async throws -> Void = { peer, delaySec in
             try await Task.sleep(nanoseconds: 1_000_000_000 * UInt64(delaySec))
-            let webRTCManager = peer == WebRTCManager.peer.presenter ? facilitatorWebRTCManager : testerWebRTCManager
+            let webRTCManager = peer == WebRTCManager.peer.host ? hostWebRTCManager : guestWebRTCManager
             await webRTCManager.retryConnect(testId: testId, currentPeer: peer)
         }
         let waitForConnection: (WebRTCManager.peer, () async throws -> Void) async throws -> Void = { peer, connectedCallback in
-            let webRTCManager = peer == WebRTCManager.peer.presenter ? facilitatorWebRTCManager : testerWebRTCManager
+            let webRTCManager = peer == WebRTCManager.peer.host ? hostWebRTCManager : guestWebRTCManager
             for await connectionState in webRTCManager.connectionState {
                 if connectionState == .connected {
                     try await connectedCallback()
@@ -150,23 +150,23 @@ final class VideoChatTests: XCTestCase {
                 }
             }
         }
-        let presenterConnectionTask = Task {
-            try await connectPeer(WebRTCManager.peer.presenter, facilitatorDelaySec)
+        let hostConnectionTask = Task {
+            try await connectPeer(WebRTCManager.peer.host, hostDelaySec)
         }
-        let receiverConnectionTask = Task {
-            try await connectPeer(WebRTCManager.peer.receiver, testerDelaySec)
+        let guestConnectionTask = Task {
+            try await connectPeer(WebRTCManager.peer.guest, guestDelaySec)
         }
         let t4 = Task {
-            try await waitForConnection(WebRTCManager.peer.receiver) {
-                if interruptedPeer == WebRTCManager.peer.receiver {
-                    receiverConnectionTask.cancel()
+            try await waitForConnection(WebRTCManager.peer.guest) {
+                if interruptedPeer == WebRTCManager.peer.guest {
+                    guestConnectionTask.cancel()
                 }
             }
         }
         let t3 = Task {
-            try await waitForConnection(WebRTCManager.peer.presenter) {
-                if interruptedPeer == WebRTCManager.peer.presenter {
-                    presenterConnectionTask.cancel()
+            try await waitForConnection(WebRTCManager.peer.host) {
+                if interruptedPeer == WebRTCManager.peer.host {
+                    hostConnectionTask.cancel()
                 }
             }
         }
@@ -175,7 +175,7 @@ final class VideoChatTests: XCTestCase {
         // allow disconnected state to propagate
         try await Task.sleep(nanoseconds: 100_000_000 * 2)
         let t5 = Task {
-            try await connectPeer(interruptedPeer, interruptedPeer == WebRTCManager.peer.receiver ? testerDelaySec : facilitatorDelaySec)
+            try await connectPeer(interruptedPeer, interruptedPeer == WebRTCManager.peer.guest ? guestDelaySec : hostDelaySec)
         }
         let t6 = Task {
             try await waitForConnection(interruptedPeer) {
@@ -183,15 +183,15 @@ final class VideoChatTests: XCTestCase {
             }
         }
         let t7 = Task {
-            let peer = interruptedPeer == WebRTCManager.peer.receiver ? WebRTCManager.peer.presenter : WebRTCManager.peer.receiver
+            let peer = interruptedPeer == WebRTCManager.peer.guest ? WebRTCManager.peer.host : WebRTCManager.peer.guest
             try await waitForConnection(peer) {
-                let taskToCancel = interruptedPeer == WebRTCManager.peer.receiver ?  presenterConnectionTask : receiverConnectionTask
+                let taskToCancel = interruptedPeer == WebRTCManager.peer.guest ?  hostConnectionTask : guestConnectionTask
                 taskToCancel.cancel()
             }
         }
         try await t6.value
         try await t7.value
-    }*/
+    }
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         measure {
