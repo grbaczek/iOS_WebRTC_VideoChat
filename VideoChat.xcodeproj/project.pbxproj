@@ -21,6 +21,7 @@
 		63434E3829291D3B0025E289 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 63434E3729291D3B0025E289 /* FirebaseCrashlytics */; };
 		63434E3A29291D3B0025E289 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 63434E3929291D3B0025E289 /* FirebaseFirestore */; };
 		63434E3C29291D3B0025E289 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 63434E3B29291D3B0025E289 /* FirebaseFirestoreSwift */; };
+		639D2413293487300086CAE8 /* ParticipantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639D2412293487300086CAE8 /* ParticipantViewModel.swift */; };
 		63A249D5292F4577009EE080 /* WebRTCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A249D4292F4577009EE080 /* WebRTCManager.swift */; };
 		63DF6FE729220F44003DC985 /* VideoChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF6FE629220F44003DC985 /* VideoChatApp.swift */; };
 		63DF6FE929220F44003DC985 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF6FE829220F44003DC985 /* ContentView.swift */; };
@@ -67,6 +68,7 @@
 		6328FB34292B546500441757 /* IceCandidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IceCandidate.swift; sourceTree = "<group>"; };
 		63434E2D292913100025E289 /* VideoChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoChatRepository.swift; sourceTree = "<group>"; };
 		63434E30292918A00025E289 /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
+		639D2412293487300086CAE8 /* ParticipantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantViewModel.swift; sourceTree = "<group>"; };
 		63A249D4292F4577009EE080 /* WebRTCManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRTCManager.swift; sourceTree = "<group>"; };
 		63DF6FE329220F44003DC985 /* VideoChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63DF6FE629220F44003DC985 /* VideoChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoChatApp.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				63F22DB0292A5983005BE0A2 /* JoinChatRoom.swift */,
 				63F22DB4292AB1FB005BE0A2 /* HostView.swift */,
 				63F22DB6292AB20C005BE0A2 /* GuestView.swift */,
+				639D2412293487300086CAE8 /* ParticipantViewModel.swift */,
 			);
 			path = VideoChat;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				639D2413293487300086CAE8 /* ParticipantViewModel.swift in Sources */,
 				63F22DB1292A5983005BE0A2 /* JoinChatRoom.swift in Sources */,
 				63DF6FE929220F44003DC985 /* ContentView.swift in Sources */,
 				6328FB2F292B51F100441757 /* SignalingClient.swift in Sources */,

@@ -63,7 +63,7 @@ public class WebRTCManager {
         print("WebRTCManager deinit")
     }
 
-    func retryConnect(testId: String, currentPeer: peer, preConnectionCallback: (() async throws -> Void)? = nil) async {
+    func retryConnect(chatRoomId: String, currentPeer: peer, preConnectionCallback: (() async throws -> Void)? = nil) async {
         defer {
             webRTCClient?.closePeerConnection()
             connectionStateContainer.state = webRTCManagerConnectionState.disconnected
@@ -74,7 +74,7 @@ public class WebRTCManager {
                     return
                 }
                 try await connect(
-                    testId: testId,
+                    testId: chatRoomId,
                     currentPeer: currentPeer,
                     preConnectionCallback: preConnectionCallback
                 )

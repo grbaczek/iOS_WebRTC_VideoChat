@@ -13,18 +13,10 @@ class VideoChatRepository {
     
     private let db = Firestore.firestore()
     
-    func createChatRoom(chatRoomName: String) async throws {
-        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
-            db.collection(FirebaseKeys.roomsCollectionPath).addDocument(data: [
-                FirebaseKeys.roomCollectionNameKey : chatRoomName
-            ]) { err in
-                if let err = err {
-                    continuation.resume(throwing: err)
-                } else {
-                    continuation.resume()
-                }
-            }
-        }
+    func createChatRoom(chatRoomName: String) async throws -> String {
+        try await db.collection(FirebaseKeys.roomsCollectionPath).addDocument(data: [
+            FirebaseKeys.roomCollectionNameKey : chatRoomName
+        ]).documentID
     }
     
     func getChatRooms() -> AsyncThrowingStream<[(String, ChatRoom)], Error> {

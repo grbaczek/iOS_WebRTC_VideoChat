@@ -9,15 +9,23 @@ import Foundation
 import SwiftUI
 
 struct GuestView: View {
+    
+    @StateObject var viewModel: ParticipantViewModel
+    
     var body: some View {
         VStack {
-            Text("Hello from guest view")
+            Text("Guest, roomId: \(viewModel.chatRoomId)")
         }
     }
 }
 
 struct GuestViewPreview: PreviewProvider {
     static var previews: some View {
-        GuestView()
+        GuestView(
+            viewModel: ParticipantViewModel(
+                chatRoomId: "",
+                currentPeer: WebRTCManager.peer.host
+            )
+        )
     }
 }

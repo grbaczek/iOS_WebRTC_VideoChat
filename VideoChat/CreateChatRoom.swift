@@ -11,7 +11,7 @@ import SwiftUI
 class CreateChatRoomViewModel: ObservableObject {
     private let videoChatRepository = VideoChatRepository()
     
-    func createChatRoom(chatRoomName: String) async throws {
+    func createChatRoom(chatRoomName: String) async throws -> String {
         try await videoChatRepository.createChatRoom(chatRoomName: chatRoomName)
     }
 }
@@ -21,7 +21,7 @@ struct CreateChatRoom: View {
     @State var chatRoomName: String = ""
     @State var errorMessage: String = ""
     @State var creatingChatRoom: Bool = false
-    @State var roomCreated: Bool = false
+    @State var roomId: String = ""
     @StateObject var createChatRoomViewModel = CreateChatRoomViewModel()
     
     var body: some View {
@@ -35,16 +35,30 @@ struct CreateChatRoom: View {
                 Spacer()
                 NavigationLink(
                     "",
-                    destination: HostView(),
-                    isActive: $roomCreated
+                    destination: HostView(
+                        viewModel: ParticipantViewModel(
+                            chatRoomId: roomId,
+                            currentPeer: WebRTCManager.peer.host
+                        )
+                    ),
+                    isActive: Binding<Bool>(
+                        get: {
+                            roomId != ""
+                        },
+                        set: { value in
+                            if !value {
+                                roomId = ""
+                                chatRoomName = ""
+                            }
+                        }
+                    )
                 )
                 Button("Next", action: {
                     creatingChatRoom = true
                     Task {
                         errorMessage = ""
                         do {
-                            try await createChatRoomViewModel.createChatRoom(chatRoomName: chatRoomName)
-                            roomCreated = true
+                            roomId = try await createChatRoomViewModel.createChatRoom(chatRoomName: chatRoomName)
                         }
                         catch {
                             errorMessage = error.localizedDescription
@@ -52,14 +66,9 @@ struct CreateChatRoom: View {
                     }
                     creatingChatRoom = false
                 })
-                .disabled(chatRoomName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || roomCreated)
+                .disabled(chatRoomName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || roomId != "")
             }
         }
         .padding([.trailing, .leading, .bottom], 32)
-        .onChange(of: roomCreated) { value in
-            if !value {
-                chatRoomName = ""
-            }
-        }
     }
 }

@@ -108,11 +108,11 @@ final class VideoChatTests: XCTestCase {
         let facilitatorWebRTCManager = WebRTCManager()
         let t = Task {
             try await Task.sleep(nanoseconds: 1_000_000_000 * UInt64(facilitatorDelaySec))
-            await testerWebRTCManager.retryConnect(testId: testId, currentPeer: WebRTCManager.peer.guest)
+            await testerWebRTCManager.retryConnect(chatRoomId: testId, currentPeer: WebRTCManager.peer.guest)
         }
         let t2 = Task {
             try await Task.sleep(nanoseconds: 1_000_000_000 * UInt64(testerDelaySec))
-            await facilitatorWebRTCManager.retryConnect(testId: testId, currentPeer: WebRTCManager.peer.host)
+            await facilitatorWebRTCManager.retryConnect(chatRoomId: testId, currentPeer: WebRTCManager.peer.host)
         }
         let t3 = Task {
             for await connectionState in testerWebRTCManager.connectionState {
@@ -139,7 +139,7 @@ final class VideoChatTests: XCTestCase {
         let connectPeer: (WebRTCManager.peer, Int) async throws -> Void = { peer, delaySec in
             try await Task.sleep(nanoseconds: 1_000_000_000 * UInt64(delaySec))
             let webRTCManager = peer == WebRTCManager.peer.host ? hostWebRTCManager : guestWebRTCManager
-            await webRTCManager.retryConnect(testId: testId, currentPeer: peer)
+            await webRTCManager.retryConnect(chatRoomId: testId, currentPeer: peer)
         }
         let waitForConnection: (WebRTCManager.peer, () async throws -> Void) async throws -> Void = { peer, connectedCallback in
             let webRTCManager = peer == WebRTCManager.peer.host ? hostWebRTCManager : guestWebRTCManager

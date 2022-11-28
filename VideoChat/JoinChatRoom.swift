@@ -35,7 +35,12 @@ struct JoinChatRoom: View {
                 LazyVStack {
                     ForEach(joinChatRoomViewModel.chatRooms, id: \.0) {  chatRoom in
                         NavigationLink(chatRoom.1.name) {
-                            GuestView()
+                            GuestView(
+                                viewModel: ParticipantViewModel(
+                                    chatRoomId: chatRoom.0,
+                                    currentPeer: WebRTCManager.peer.guest
+                                )
+                            )
                         }
                     }
                 }
