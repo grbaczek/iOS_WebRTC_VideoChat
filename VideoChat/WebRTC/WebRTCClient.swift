@@ -171,11 +171,8 @@ class WebRTCClient: NSObject {
         self.remoteVideoTrack?.add(remoteRenderer)
         return remoteRenderer
     }
-    /*private func renderRemoteVideo(to renderer: RTCVideoRenderer) {
-        self.remoteVideoTrack?.add(renderer)
-    }*/
     
-    private func startCaptureLocalVideo() {
+    func startCaptureLocalVideo() {
       guard let capturer = self.videoCapturer as? RTCCameraVideoCapturer else {
         return
       }
@@ -257,6 +254,11 @@ class WebRTCClient: NSObject {
 
     private func createVideoTrack() -> RTCVideoTrack {
         let videoSource = WebRTCClient.factory.videoSource()
+        #if TARGET_OS_SIMULATOR
+        self.videoCapturer = RTCFileVideoCapturer(delegate: videoSource)
+        #else
+        self.videoCapturer = RTCCameraVideoCapturer(delegate: videoSource)
+        #endif
         //self.videoCapturer = RTCCustomFrameCapturer(delegate: videoSource)
         let videoTrack = WebRTCClient.factory.videoTrack(with: videoSource, trackId: "video0")
         return videoTrack

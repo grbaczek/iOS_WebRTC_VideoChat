@@ -26,5 +26,7 @@ struct RtcVideoView: UIViewRepresentable {
         return rtcView
     }
 
-    func updateUIView(_ uiView: UIView, context: Context) {}
+    func updateUIView(_ uiView: UIView, context: Context) {
+        
+    }
 }

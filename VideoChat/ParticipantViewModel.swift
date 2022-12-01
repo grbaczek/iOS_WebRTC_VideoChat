@@ -33,6 +33,8 @@ class ParticipantViewModel: ObservableObject {
     }
     
     func rtcViewInit(uiView: UIView,containerSize: CGSize) -> UIView {
-        webRTCManager.renderRemoteVideo(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: containerSize))!
+        let view = webRTCManager.renderRemoteVideo(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: containerSize))!
+        webRTCManager.startCaptureLocalVideo()
+        return view
     }
 }

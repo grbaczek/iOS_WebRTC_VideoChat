@@ -92,6 +92,10 @@ public class WebRTCManager {
     func renderRemoteVideo(frame: CGRect) -> UIView? {
         webRTCClient?.renderRemoteVideo(frame: frame)
     }
+    
+    func startCaptureLocalVideo() {
+        webRTCClient?.startCaptureLocalVideo()
+    }
     private func connect(testId: String, currentPeer: peer, preConnectionCallback: (() async throws -> Void)? = nil) async throws {
         webRTCClient?.closePeerConnection()
         let signalClient = SignalingClient()

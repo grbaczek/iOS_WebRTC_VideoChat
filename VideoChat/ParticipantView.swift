@@ -21,6 +21,11 @@ struct ParticipantView: View {
                         containerSize: reader.size,
                         rtcViewInit: viewModel.rtcViewInit
                     )
+                    .frame(
+                        width: .infinity,
+                        height: .infinity,
+                        alignment: .center
+                    )
                 } else {
                     VStack {
                         Text("\(viewModel.currentPeer.rawValue), roomId: \(viewModel.chatRoomId)")
