@@ -10,7 +10,7 @@ import XCTest
 
 final class VideoChatTests: XCTestCase {
 
-    private let testId = "ri13j5tHOzW08K3xUVFd"
+    private let testId = "jRkXnmeGUYg5PMCIDD4p"
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }

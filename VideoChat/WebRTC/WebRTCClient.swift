@@ -160,28 +160,45 @@ class WebRTCClient: NSObject {
         }
     }
     // MARK: Media
-    func captureCurrentFrame(sampleBuffer: CMSampleBuffer) {
-        /*if let capturer = self.videoCapturer as? RTCCustomFrameCapturer {
-            capturer.capture(sampleBuffer)
-        }*/
-    }
-    func renderRemoteVideo(view: UIView) -> UIView {
+   
+    func renderRemoteVideo(frame: CGRect) -> UIView {
         #if arch(arm64)
-        let remoteRenderer = RTCMTLVideoView(frame: view.frame)
-        remoteRenderer.videoContentMode = .scaleAspectFit
+            let remoteRenderer = RTCMTLVideoView(frame: frame)
+            remoteRenderer.videoContentMode = .scaleAspectFit
         #else
-        let remoteRenderer = RTCEAGLVideoView(frame: view.frame)
+            let remoteRenderer = RTCEAGLVideoView(frame: frame)
         #endif
-        renderRemoteVideo(
-            to: remoteRenderer)
+        self.remoteVideoTrack?.add(remoteRenderer)
         return remoteRenderer
     }
-    func renderRemoteVideo(to renderer: RTCVideoRenderer) {
-        /*self.remoteVideoTrack?.add(renderer)
-        if let webRTCStreamParser = webRTCStreamParser {
-            self.remoteVideoTrack?.add(webRTCStreamParser)
-        }*/
+    /*private func renderRemoteVideo(to renderer: RTCVideoRenderer) {
+        self.remoteVideoTrack?.add(renderer)
+    }*/
+    
+    private func startCaptureLocalVideo() {
+      guard let capturer = self.videoCapturer as? RTCCameraVideoCapturer else {
+        return
+      }
+      
+      guard let frontCamera = (RTCCameraVideoCapturer.captureDevices().first { $0.position == .front }),
+        // choose highest res
+        let format = (RTCCameraVideoCapturer.supportedFormats(for: frontCamera).sorted { (f1, f2) -> Bool in
+          let width1 = CMVideoFormatDescriptionGetDimensions(f1.formatDescription).width
+          let width2 = CMVideoFormatDescriptionGetDimensions(f2.formatDescription).width
+          return width1 < width2
+        }).last,
+        // choose highest fps
+        let fps = (format.videoSupportedFrameRateRanges.sorted { return $0.maxFrameRate < $1.maxFrameRate }.last) else {
+          return
+      }
+      
+      capturer.startCapture(with: frontCamera,
+                            format: format,
+                            fps: Int(fps.maxFrameRate))
+      
+      //self.localVideoTrack?.add(renderer)
     }
+    
     func closePeerConnection() {
         peerConnection?.close()
     }

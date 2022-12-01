@@ -89,11 +89,8 @@ public class WebRTCManager {
             }
         }
     }
-    func captureCurrentFrame(sampleBuffer: CMSampleBuffer) {
-        webRTCClient?.captureCurrentFrame(sampleBuffer: sampleBuffer)
-    }
-    func renderRemoteVideo(to view: UIView) -> UIView? {
-        webRTCClient?.renderRemoteVideo(view: view)
+    func renderRemoteVideo(frame: CGRect) -> UIView? {
+        webRTCClient?.renderRemoteVideo(frame: frame)
     }
     private func connect(testId: String, currentPeer: peer, preConnectionCallback: (() async throws -> Void)? = nil) async throws {
         webRTCClient?.closePeerConnection()
@@ -109,9 +106,11 @@ public class WebRTCManager {
         let connectedTask = Task {
             for await state in webRTCClient.getConnectionState() {
                 if state == .connected || state == .completed {
+                    print("WebRTCManager connected")
                     connectionStateContainer.state = .connected
                     speakerOn()
                 } else {
+                    print("WebRTCManager disconnected")
                     connectionStateContainer.state = .disconnected
                     speakerOff()
                 }
@@ -129,21 +128,26 @@ public class WebRTCManager {
         // exchange rtc first: https://webrtc.org/getting-started/peer-connections
         try await withThrowingTaskGroup(of: Void.self) { group in
             group.addTask {
+                print("WebRTCManager signalClient.getRTCSessionDescriptions")
                 for try await rtcSessionDescription in  signalClient.getRTCSessionDescriptions(
                     currentPeer.watchKey,
                     testId) {
                     try await webRTCClient.set(remoteSdp: rtcSessionDescription)
                     if currentPeer == .guest {
+                        print("WebRTCManager webRTCClient.answer()")
                         let sdp = try await webRTCClient.answer()
                         try await signalClient.send(sdp: sdp, testId: testId, collection: currentPeer.sendKey)
                     }
+                    print("WebRTCManager rtcSessionDescription break")
                     break
                 }
             }
             if currentPeer == .host {
                 group.addTask {
                     let sdp = try await webRTCClient.offer()
+                    print("WebRTCManager  webRTCClient.offer()")
                     try await signalClient.send(sdp: sdp, testId: testId, collection: currentPeer.sendKey)
+                    print("WebRTCManager signalClient.send")
                 }
             }
             group.addTask {
@@ -157,6 +161,7 @@ public class WebRTCManager {
             }
             try await group.waitForAll()
         }
+        print("WebRTCManager rtc exchanged")
         try await withThrowingTaskGroup(of: Void.self) { group in
             group.addTask {
                 for try await candidate in signalClient.getCandidates(currentPeer.watchKey, testId) {

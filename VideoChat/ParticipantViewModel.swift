@@ -6,14 +6,16 @@
 //
 
 import Foundation
+import UIKit
 
 @MainActor
 class ParticipantViewModel: ObservableObject {
     
-    private var webRTCManager = WebRTCManager()
-    private var currentPeer: WebRTCManager.peer
+    private let webRTCManager = WebRTCManager()
+    let currentPeer: WebRTCManager.peer
     let chatRoomId: String
     @Published var connectionState: WebRTCManager.webRTCManagerConnectionState = .disconnected
+    
     
     init(chatRoomId: String, currentPeer: WebRTCManager.peer) {
         self.chatRoomId = chatRoomId
@@ -28,5 +30,9 @@ class ParticipantViewModel: ObservableObject {
     
     func retryConnect() async {
         await webRTCManager.retryConnect(chatRoomId: chatRoomId, currentPeer: currentPeer)
+    }
+    
+    func rtcViewInit(uiView: UIView,containerSize: CGSize) -> UIView {
+        webRTCManager.renderRemoteVideo(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: containerSize))!
     }
 }

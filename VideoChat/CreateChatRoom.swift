@@ -35,7 +35,7 @@ struct CreateChatRoom: View {
                 Spacer()
                 NavigationLink(
                     "",
-                    destination: HostView(
+                    destination: ParticipantView(
                         viewModel: ParticipantViewModel(
                             chatRoomId: roomId,
                             currentPeer: WebRTCManager.peer.host
