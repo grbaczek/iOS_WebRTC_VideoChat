@@ -21,11 +21,6 @@ struct ParticipantView: View {
                         containerSize: reader.size,
                         rtcViewInit: viewModel.rtcViewInit
                     )
-                    .frame(
-                        width: .infinity,
-                        height: .infinity,
-                        alignment: .center
-                    )
                 } else {
                     VStack {
                         Text("\(viewModel.currentPeer.rawValue), roomId: \(viewModel.chatRoomId)")
@@ -35,12 +30,15 @@ struct ParticipantView: View {
         }
         .task {
             await viewModel.retryConnect()
+            print("WebRTCManager after viewModel.retryConnect()")
         }
-        .onChange(of: viewModel.connectionState) { value in
-            withAnimation{
-                connectionState = value
+        .task {
+            for await connectionState in viewModel.connectionState {
+                self.connectionState = connectionState
             }
+            print("WebRTCManager after for await connectionState in viewModel.connectionState")
         }
+        
     }
 }
 

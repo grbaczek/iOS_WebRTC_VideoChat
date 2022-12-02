@@ -14,18 +14,18 @@ class ParticipantViewModel: ObservableObject {
     private let webRTCManager = WebRTCManager()
     let currentPeer: WebRTCManager.peer
     let chatRoomId: String
-    @Published var connectionState: WebRTCManager.webRTCManagerConnectionState = .disconnected
-    
     
     init(chatRoomId: String, currentPeer: WebRTCManager.peer) {
         self.chatRoomId = chatRoomId
         self.currentPeer = currentPeer
-        
-        Task { [weak self] in
-            for await connectionState in webRTCManager.connectionState {
-                self?.connectionState = connectionState
-            }
-        }
+    }
+    
+    var connectionState: AsyncStream<WebRTCManager.webRTCManagerConnectionState> {
+        webRTCManager.connectionState
+    }
+    
+    deinit {
+        print("WebRTCManager ParticipantViewModel deinit")
     }
     
     func retryConnect() async {
