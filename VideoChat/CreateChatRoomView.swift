@@ -16,7 +16,7 @@ class CreateChatRoomViewModel: ObservableObject {
     }
 }
 
-struct CreateChatRoom: View {
+struct CreateChatRoomView: View {
     
     @State var chatRoomName: String = ""
     @State var errorMessage: String = ""
@@ -40,7 +40,9 @@ struct CreateChatRoom: View {
                             chatRoomId: roomId,
                             currentPeer: WebRTCManager.peer.host
                         )
-                    ),
+                    )
+                    .navigationTitle("Host \(chatRoomName)")
+                    ,
                     isActive: Binding<Bool>(
                         get: {
                             roomId != ""

@@ -38,6 +38,7 @@ public class WebRTCManager {
     }
     class ConnectionStateContainer {
         @Published var state = webRTCManagerConnectionState.disconnected
+        @Published var info = "Idle"
     }
     enum connectionError: Error {
         case connectionTimeoutError
@@ -56,6 +57,18 @@ public class WebRTCManager {
             }
         }
     }
+    var connectionStateInfo: AsyncStream<String> {
+        AsyncStream {  continuation in
+            let subscription = connectionStateContainer.$info
+                .sink(receiveValue: { info in
+                    continuation.yield(info)
+                })
+            continuation.onTermination = { @Sendable _ in
+                subscription.cancel()
+            }
+        }
+    }
+    
     private var connectionStateContainer = ConnectionStateContainer()
     private var webRTCClient: WebRTCClient?
 
@@ -80,7 +93,7 @@ public class WebRTCManager {
                 )
                 try Task.checkCancellation()
             } catch is CancellationError {
-                print("retryConnect cancelled")
+                connectionStateContainer.info = "retry connection cancelled"
                 return
             } catch {
                 print(error.localizedDescription)
@@ -101,6 +114,7 @@ public class WebRTCManager {
         let signalClient = SignalingClient()
         try await signalClient.deleteSdpAndCandidate(collection: currentPeer.sendKey, testId: testId)
         try await signalClient.waitUntilSdpAndCandidatesDeleted(collection: currentPeer.watchKey, testId: testId)
+        connectionStateContainer.info = "SDP and candidate data cleared"
         let webRTCClient = try WebRTCClient()
         try webRTCClient.createPeerConnection()
         self.webRTCClient = webRTCClient
@@ -110,11 +124,11 @@ public class WebRTCManager {
         let connectedTask = Task {
             for await state in webRTCClient.getConnectionState() {
                 if state == .connected || state == .completed {
-                    print("WebRTCManager connected")
+                    connectionStateContainer.info = "Connected"
                     connectionStateContainer.state = .connected
                     speakerOn()
                 } else {
-                    print("WebRTCManager disconnected")
+                    connectionStateContainer.info = "Disconnected"
                     connectionStateContainer.state = .disconnected
                     speakerOff()
                 }
@@ -132,26 +146,24 @@ public class WebRTCManager {
         // exchange rtc first: https://webrtc.org/getting-started/peer-connections
         try await withThrowingTaskGroup(of: Void.self) { group in
             group.addTask {
-                print("WebRTCManager signalClient.getRTCSessionDescriptions")
                 for try await rtcSessionDescription in  signalClient.getRTCSessionDescriptions(
                     currentPeer.watchKey,
                     testId) {
                     try await webRTCClient.set(remoteSdp: rtcSessionDescription)
+                    connectionStateContainer.info = "Remote SDP set"
                     if currentPeer == .guest {
-                        print("WebRTCManager webRTCClient.answer()")
                         let sdp = try await webRTCClient.answer()
                         try await signalClient.send(sdp: sdp, testId: testId, collection: currentPeer.sendKey)
+                        connectionStateContainer.info = "SDP answer sent"
                     }
-                    print("WebRTCManager rtcSessionDescription break")
                     break
                 }
             }
             if currentPeer == .host {
                 group.addTask {
                     let sdp = try await webRTCClient.offer()
-                    print("WebRTCManager  webRTCClient.offer()")
                     try await signalClient.send(sdp: sdp, testId: testId, collection: currentPeer.sendKey)
-                    print("WebRTCManager signalClient.send")
+                    connectionStateContainer.info = "SDP offer sent"
                 }
             }
             group.addTask {
@@ -161,25 +173,29 @@ public class WebRTCManager {
                     }
                     try await Task.sleep(milliseconds: 100)
                 }
+                connectionStateContainer.info = "Connection timeout"
                 throw connectionError.connectionTimeoutError
             }
             try await group.waitForAll()
         }
-        print("WebRTCManager rtc exchanged")
+        connectionStateContainer.info = "RTC exchanged"
         try await withThrowingTaskGroup(of: Void.self) { group in
             group.addTask {
                 for try await candidate in signalClient.getCandidates(currentPeer.watchKey, testId) {
                     try await webRTCClient.set(remoteCandidate: candidate)
                 }
+                connectionStateContainer.info = "Candidates set"
             }
             group.addTask {
                 for await state in webRTCClient.getConnectionState() where state == .failed {
+                    connectionStateContainer.info = "Connection failed"
                     throw connectionError.connectionFailed
                 }
             }
             group.addTask {
                 try await Task.sleep(seconds: 15)
                 if connectionStateContainer.state != .connected {
+                    connectionStateContainer.info = "Connection timeout"
                     throw connectionError.connectionTimeoutError
                 }
             }
@@ -188,6 +204,7 @@ public class WebRTCManager {
                 try await signalClient.waitUntilSdpAndCandidatesDeleted(
                     collection: currentPeer.watchKey,
                     testId: testId)
+                connectionStateContainer.info = "Peer connection reset"
                 throw connectionError.connectionReset
             }
             try await group.waitForAll()

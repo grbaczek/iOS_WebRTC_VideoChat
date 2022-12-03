@@ -13,11 +13,13 @@ struct ContentView: View {
             VStack {
                 Spacer()
                 NavigationLink("Create chat room") {
-                    CreateChatRoom()
+                    CreateChatRoomView()
+                        .navigationTitle("Create chat room")
                 }
                 .padding()
                 NavigationLink("Join chat room") {
-                    JoinChatRoom()
+                    JoinChatRoomView()
+                        .navigationTitle("Join chat room")
                 }
                 .padding()
                 Spacer()

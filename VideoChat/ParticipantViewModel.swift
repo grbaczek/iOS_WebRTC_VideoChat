@@ -23,6 +23,9 @@ class ParticipantViewModel: ObservableObject {
     var connectionState: AsyncStream<WebRTCManager.webRTCManagerConnectionState> {
         webRTCManager.connectionState
     }
+    var connectionStateInfo: AsyncStream<String> {
+        webRTCManager.connectionStateInfo
+    }
     
     deinit {
         print("WebRTCManager ParticipantViewModel deinit")

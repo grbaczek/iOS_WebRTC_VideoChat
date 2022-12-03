@@ -12,6 +12,7 @@ struct ParticipantView: View {
     
     @StateObject var viewModel: ParticipantViewModel
     @State var connectionState: WebRTCManager.webRTCManagerConnectionState = .disconnected
+    @State var connectionStateInfo: String = ""
     
     var body: some View {
         GeometryReader { reader in
@@ -23,20 +24,34 @@ struct ParticipantView: View {
                     )
                 } else {
                     VStack {
-                        Text("\(viewModel.currentPeer.rawValue), roomId: \(viewModel.chatRoomId)")
+                        Spacer()
+                        HStack{
+                            Spacer()
+                            Text(connectionStateInfo)
+                                .multilineTextAlignment(.center)
+                            Spacer()
+                        }
+                        Spacer()
                     }
                 }
             }
         }
         .task {
             await viewModel.retryConnect()
-            print("WebRTCManager after viewModel.retryConnect()")
         }
         .task {
             for await connectionState in viewModel.connectionState {
-                self.connectionState = connectionState
+                withAnimation {
+                    self.connectionState = connectionState
+                }
             }
-            print("WebRTCManager after for await connectionState in viewModel.connectionState")
+        }
+        .task {
+            for await connectionStateInfo in viewModel.connectionStateInfo {
+                withAnimation {
+                    self.connectionStateInfo = connectionStateInfo
+                }
+            }
         }
         
     }

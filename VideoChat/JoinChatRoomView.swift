@@ -22,7 +22,7 @@ class JoinChatRoomViewModel: ObservableObject {
     }
 }
 
-struct JoinChatRoom: View {
+struct JoinChatRoomView: View {
     
     @StateObject var joinChatRoomViewModel = JoinChatRoomViewModel()
     @State var errorMessage: String = ""
@@ -35,15 +35,16 @@ struct JoinChatRoom: View {
                 LazyVStack {
                     ForEach(joinChatRoomViewModel.chatRooms, id: \.0) {  chatRoom in
                         NavigationLink(chatRoom.1.name) {
-                            ParticipantView(
-                                viewModel: ParticipantViewModel(
-                                    chatRoomId: chatRoom.0,
-                                    currentPeer: WebRTCManager.peer.guest
-                                )
+                            PickParticipantView(
+                                chatRoomId: chatRoom.0,
+                                chatRoomName: chatRoom.1.name
                             )
+                            .navigationTitle("Pick participant")
                         }
+                        .padding()
                     }
                 }
+                .padding()
             }
         }.task {
             do {
