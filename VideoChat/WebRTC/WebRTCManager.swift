@@ -87,7 +87,7 @@ public class WebRTCManager {
                     return
                 }
                 try await connect(
-                    testId: chatRoomId,
+                    chatRoomId: chatRoomId,
                     currentPeer: currentPeer,
                     preConnectionCallback: preConnectionCallback
                 )
@@ -109,11 +109,11 @@ public class WebRTCManager {
     func startCaptureLocalVideo() {
         webRTCClient?.startCaptureLocalVideo()
     }
-    private func connect(testId: String, currentPeer: peer, preConnectionCallback: (() async throws -> Void)? = nil) async throws {
+    private func connect(chatRoomId: String, currentPeer: peer, preConnectionCallback: (() async throws -> Void)? = nil) async throws {
         webRTCClient?.closePeerConnection()
         let signalClient = SignalingClient()
-        try await signalClient.deleteSdpAndCandidate(collection: currentPeer.sendKey, testId: testId)
-        try await signalClient.waitUntilSdpAndCandidatesDeleted(collection: currentPeer.watchKey, testId: testId)
+        try await signalClient.deleteSdpAndCandidate(collection: currentPeer.sendKey, testId: chatRoomId)
+        try await signalClient.waitUntilSdpAndCandidatesDeleted(collection: currentPeer.watchKey, testId: chatRoomId)
         connectionStateContainer.info = "SDP and candidate data cleared"
         let webRTCClient = try WebRTCClient()
         try webRTCClient.createPeerConnection()
@@ -136,7 +136,7 @@ public class WebRTCManager {
         }
         let candidateTask = Task {
             for try await candidate in webRTCClient.getCandidates() {
-                try await signalClient.send(candidate: candidate, testId: testId, collection: currentPeer.sendKey)
+                try await signalClient.send(candidate: candidate, testId: chatRoomId, collection: currentPeer.sendKey)
             }
         }
         defer {
@@ -148,12 +148,13 @@ public class WebRTCManager {
             group.addTask {
                 for try await rtcSessionDescription in  signalClient.getRTCSessionDescriptions(
                     currentPeer.watchKey,
-                    testId) {
+                    chatRoomId
+                ) {
                     try await webRTCClient.set(remoteSdp: rtcSessionDescription)
                     connectionStateContainer.info = "Remote SDP set"
                     if currentPeer == .guest {
                         let sdp = try await webRTCClient.answer()
-                        try await signalClient.send(sdp: sdp, testId: testId, collection: currentPeer.sendKey)
+                        try await signalClient.send(sdp: sdp, testId: chatRoomId, collection: currentPeer.sendKey)
                         connectionStateContainer.info = "SDP answer sent"
                     }
                     break
@@ -162,7 +163,7 @@ public class WebRTCManager {
             if currentPeer == .host {
                 group.addTask {
                     let sdp = try await webRTCClient.offer()
-                    try await signalClient.send(sdp: sdp, testId: testId, collection: currentPeer.sendKey)
+                    try await signalClient.send(sdp: sdp, testId: chatRoomId, collection: currentPeer.sendKey)
                     connectionStateContainer.info = "SDP offer sent"
                 }
             }
@@ -181,7 +182,7 @@ public class WebRTCManager {
         connectionStateContainer.info = "RTC exchanged"
         try await withThrowingTaskGroup(of: Void.self) { group in
             group.addTask {
-                for try await candidate in signalClient.getCandidates(currentPeer.watchKey, testId) {
+                for try await candidate in signalClient.getCandidates(currentPeer.watchKey, chatRoomId) {
                     try await webRTCClient.set(remoteCandidate: candidate)
                 }
                 connectionStateContainer.info = "Candidates set"
@@ -203,7 +204,7 @@ public class WebRTCManager {
                 // peer has deleted sdp and candidates - reset connection
                 try await signalClient.waitUntilSdpAndCandidatesDeleted(
                     collection: currentPeer.watchKey,
-                    testId: testId)
+                    testId: chatRoomId)
                 connectionStateContainer.info = "Peer connection reset"
                 throw connectionError.connectionReset
             }
