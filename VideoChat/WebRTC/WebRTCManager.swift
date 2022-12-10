@@ -112,8 +112,8 @@ public class WebRTCManager {
     private func connect(chatRoomId: String, currentPeer: peer, preConnectionCallback: (() async throws -> Void)? = nil) async throws {
         webRTCClient?.closePeerConnection()
         let signalClient = SignalingClient()
-        try await signalClient.deleteSdpAndCandidate(collection: currentPeer.sendKey, testId: chatRoomId)
-        try await signalClient.waitUntilSdpAndCandidatesDeleted(collection: currentPeer.watchKey, testId: chatRoomId)
+        try await signalClient.deleteSdpAndCandidate(collection: currentPeer.sendKey, chatRoomId: chatRoomId)
+        try await signalClient.waitUntilSdpAndCandidatesDeleted(collection: currentPeer.watchKey, chatRoomId: chatRoomId)
         connectionStateContainer.info = "SDP and candidate data cleared"
         let webRTCClient = try WebRTCClient()
         try webRTCClient.createPeerConnection()
@@ -204,7 +204,7 @@ public class WebRTCManager {
                 // peer has deleted sdp and candidates - reset connection
                 try await signalClient.waitUntilSdpAndCandidatesDeleted(
                     collection: currentPeer.watchKey,
-                    testId: chatRoomId)
+                    chatRoomId: chatRoomId)
                 connectionStateContainer.info = "Peer connection reset"
                 throw connectionError.connectionReset
             }

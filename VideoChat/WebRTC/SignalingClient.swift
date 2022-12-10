@@ -44,9 +44,9 @@ class SignalingClient {
             }
         }
     }
-    func getCandidates(_ collection: String, _ testId: String) -> AsyncThrowingStream<RTCIceCandidate, Error> {
+    func getCandidates(_ collection: String, _ chatRoomId: String) -> AsyncThrowingStream<RTCIceCandidate, Error> {
         AsyncThrowingStream { continuation in
-            let listener = getCandidatesCollection(collection, testId)
+            let listener = getCandidatesCollection(collection, chatRoomId)
                 .addSnapshotListener { querySnapshot, error in
                     if let querySnapshot = querySnapshot {
                         querySnapshot.documentChanges.forEach { documentChange in
@@ -68,25 +68,25 @@ class SignalingClient {
             }
         }
     }
-    func deleteSpdDocument(_ collection: String, _ testId: String) async throws {
-        try await getSpdDocument(collection, testId)
+    func deleteSpdDocument(_ collection: String, _ chatRoomId: String) async throws {
+        try await getSpdDocument(collection, chatRoomId)
             .delete()
     }
-    func deleteSdpAndCandidate(collection: String, testId: String) async throws {
-        try await deleteSpdDocument(collection, testId)
-        let candidatesQuerySnapshot = try await getCandidatesCollection(collection, testId)
+    func deleteSdpAndCandidate(collection: String, chatRoomId: String) async throws {
+        try await deleteSpdDocument(collection, chatRoomId)
+        let candidatesQuerySnapshot = try await getCandidatesCollection(collection, chatRoomId)
             .getDocuments()
         for queryDocumentSnapshot in candidatesQuerySnapshot.documents {
             try await queryDocumentSnapshot.reference.delete()
         }
     }
-    func waitUntilSdpAndCandidatesDeleted(collection: String, testId: String) async throws {
-        var sdpDocumentExists = try await getSpdDocument(collection, testId).getDocument().exists
-        var candidatesCollectionExists = try await !getCandidatesCollection(collection, testId).getDocuments().isEmpty
+    func waitUntilSdpAndCandidatesDeleted(collection: String, chatRoomId: String) async throws {
+        var sdpDocumentExists = try await getSpdDocument(collection, chatRoomId).getDocument().exists
+        var candidatesCollectionExists = try await !getCandidatesCollection(collection, chatRoomId).getDocuments().isEmpty
         while sdpDocumentExists && candidatesCollectionExists {
             try await Task.sleep(nanoseconds: 1_000_000 * 200)
-            sdpDocumentExists = try await getSpdDocument(collection, testId).getDocument().exists
-            candidatesCollectionExists = try await !getCandidatesCollection(collection, testId).getDocuments().isEmpty
+            sdpDocumentExists = try await getSpdDocument(collection, chatRoomId).getDocument().exists
+            candidatesCollectionExists = try await !getCandidatesCollection(collection, chatRoomId).getDocuments().isEmpty
         }
     }
     func send(sdp rtcSdp: RTCSessionDescription, testId: String, collection: String) async throws {
