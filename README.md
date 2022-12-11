@@ -2,15 +2,22 @@
 
 This is an example implementation of iOS WebRTC video VideoChat.
 
-Establishing WebRTC connection consists of multiple asynchronous steps where data is exchanged over the network
-* communication with STUN/TURN servers
-* communication with signaling servers
+Establishing [WebRTC](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API) connection consists of multiple asynchronous steps where data is exchanged over the network
+* communication with [STUN/TURN servers](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Protocols)
+* communication with [signaling server (Firebase in this case)](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Connectivity#signaling)
 
- Error handling and connection reset is tricky.  
+ Error handling and connection reset is tricky and can result in [callback hell](http://callbackhell.com/)   
 
 The project presents:
 * approach to establishing a reliable WebRTC connection every time two peers try to connect to each other.
 * error handling and reliable connection reset
+
+Technologies used:
+* WebRTC
+* Swift programming language
+* Swift structured concurrency
+* SwiftUI
+* Firebase firestore
 
 ```Swift
 try await withThrowingTaskGroup(of: Void.self) { group in
@@ -80,12 +87,6 @@ try await withThrowingTaskGroup(of: Void.self) { group in
 }
 ```
 
-Technologies used:
-* WebRTC
-* Swift programming language
-* Swift structured concurrency
-* SwiftUI
-* Firebase firestore
 
 Core algorithm:
 
