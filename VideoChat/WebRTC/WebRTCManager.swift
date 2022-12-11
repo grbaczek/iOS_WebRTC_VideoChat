@@ -111,9 +111,9 @@ public class WebRTCManager {
     }
     private func connect(chatRoomId: String, currentPeer: peer, preConnectionCallback: (() async throws -> Void)? = nil) async throws {
         webRTCClient?.closePeerConnection()
-        let signalClient = SignalingClient()
-        try await signalClient.deleteSdpAndCandidate(collection: currentPeer.sendKey, chatRoomId: chatRoomId)
-        try await signalClient.waitUntilSdpAndCandidatesDeleted(collection: currentPeer.watchKey, chatRoomId: chatRoomId)
+        let signalingClient = SignalingClient()
+        try await signalingClient.deleteSdpAndCandidate(collection: currentPeer.sendKey, chatRoomId: chatRoomId)
+        try await signalingClient.waitUntilSdpAndCandidatesDeleted(collection: currentPeer.watchKey, chatRoomId: chatRoomId)
         connectionStateContainer.info = "SDP and candidate data cleared"
         let webRTCClient = try WebRTCClient()
         try webRTCClient.createPeerConnection()
@@ -136,7 +136,7 @@ public class WebRTCManager {
         }
         let candidateTask = Task {
             for try await candidate in webRTCClient.getCandidates() {
-                try await signalClient.send(candidate: candidate, chatRoomId: chatRoomId, collection: currentPeer.sendKey)
+                try await signalingClient.send(candidate: candidate, chatRoomId: chatRoomId, collection: currentPeer.sendKey)
             }
         }
         defer {
@@ -146,7 +146,7 @@ public class WebRTCManager {
         // exchange rtc first: https://webrtc.org/getting-started/peer-connections
         try await withThrowingTaskGroup(of: Void.self) { group in
             group.addTask {
-                if let rtcSessionDescription = try await signalClient.getRTCSessionDescriptions(
+                if let rtcSessionDescription = try await signalingClient.getRTCSessionDescriptions(
                     currentPeer.watchKey,
                     chatRoomId
                 ).first(where: { _ in true }) {
@@ -154,7 +154,7 @@ public class WebRTCManager {
                     connectionStateContainer.info = "Remote SDP set"
                     if currentPeer == .guest {
                         let sdp = try await webRTCClient.answer()
-                        try await signalClient.send(sdp: sdp, chatRoomId: chatRoomId, collection: currentPeer.sendKey)
+                        try await signalingClient.send(sdp: sdp, chatRoomId: chatRoomId, collection: currentPeer.sendKey)
                         connectionStateContainer.info = "SDP answer sent"
                     }
                 }
@@ -162,7 +162,7 @@ public class WebRTCManager {
             if currentPeer == .host {
                 group.addTask {
                     let sdp = try await webRTCClient.offer()
-                    try await signalClient.send(sdp: sdp, chatRoomId: chatRoomId, collection: currentPeer.sendKey)
+                    try await signalingClient.send(sdp: sdp, chatRoomId: chatRoomId, collection: currentPeer.sendKey)
                     connectionStateContainer.info = "SDP offer sent"
                 }
             }
@@ -181,7 +181,7 @@ public class WebRTCManager {
         connectionStateContainer.info = "RTC exchanged"
         try await withThrowingTaskGroup(of: Void.self) { group in
             group.addTask {
-                for try await candidate in signalClient.getCandidates(currentPeer.watchKey, chatRoomId) {
+                for try await candidate in signalingClient.getCandidates(currentPeer.watchKey, chatRoomId) {
                     try await webRTCClient.set(remoteCandidate: candidate)
                 }
                 connectionStateContainer.info = "Candidates set"
@@ -201,7 +201,7 @@ public class WebRTCManager {
             }
             group.addTask {
                 // peer has deleted sdp and candidates - reset connection
-                try await signalClient.waitUntilSdpAndCandidatesDeleted(
+                try await signalingClient.waitUntilSdpAndCandidatesDeleted(
                     collection: currentPeer.watchKey,
                     chatRoomId: chatRoomId)
                 connectionStateContainer.info = "Peer connection reset"

@@ -15,24 +15,23 @@ The project presents:
 ```Swift
 try await withThrowingTaskGroup(of: Void.self) { group in
     group.addTask {
-        for try await rtcSessionDescription in  signalClient.getRTCSessionDescriptions(
+        if let rtcSessionDescription = try await signalingClient.getRTCSessionDescriptions(
             currentPeer.watchKey,
             chatRoomId
-        ) {
+        ).first(where: { _ in true }) {
             try await webRTCClient.set(remoteSdp: rtcSessionDescription)
             connectionStateContainer.info = "Remote SDP set"
             if currentPeer == .guest {
                 let sdp = try await webRTCClient.answer()
-                try await signalClient.send(sdp: sdp, testId: chatRoomId, collection: currentPeer.sendKey)
+                try await signalingClient.send(sdp: sdp, chatRoomId: chatRoomId, collection: currentPeer.sendKey)
                 connectionStateContainer.info = "SDP answer sent"
             }
-            break
         }
     }
     if currentPeer == .host {
         group.addTask {
             let sdp = try await webRTCClient.offer()
-            try await signalClient.send(sdp: sdp, testId: chatRoomId, collection: currentPeer.sendKey)
+            try await signalingClient.send(sdp: sdp, chatRoomId: chatRoomId, collection: currentPeer.sendKey)
             connectionStateContainer.info = "SDP offer sent"
         }
     }
@@ -51,7 +50,7 @@ try await withThrowingTaskGroup(of: Void.self) { group in
 connectionStateContainer.info = "RTC exchanged"
 try await withThrowingTaskGroup(of: Void.self) { group in
     group.addTask {
-        for try await candidate in signalClient.getCandidates(currentPeer.watchKey, chatRoomId) {
+        for try await candidate in signalingClient.getCandidates(currentPeer.watchKey, chatRoomId) {
             try await webRTCClient.set(remoteCandidate: candidate)
         }
         connectionStateContainer.info = "Candidates set"
@@ -71,9 +70,9 @@ try await withThrowingTaskGroup(of: Void.self) { group in
     }
     group.addTask {
         // peer has deleted sdp and candidates - reset connection
-        try await signalClient.waitUntilSdpAndCandidatesDeleted(
+        try await signalingClient.waitUntilSdpAndCandidatesDeleted(
             collection: currentPeer.watchKey,
-            testId: chatRoomId)
+            chatRoomId: chatRoomId)
         connectionStateContainer.info = "Peer connection reset"
         throw connectionError.connectionReset
     }
