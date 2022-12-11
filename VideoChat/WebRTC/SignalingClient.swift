@@ -24,9 +24,9 @@ class SignalingClient {
     private let completedTestField = "completedTest"
     lazy var db = Firestore.firestore()
 
-    func getRTCSessionDescriptions(_ collection: String, _ testId: String) -> AsyncThrowingStream<RTCSessionDescription, Error> {
+    func getRTCSessionDescriptions(_ collection: String, _ chatRoomId: String) -> AsyncThrowingStream<RTCSessionDescription, Error> {
         AsyncThrowingStream { continuation in
-            let listener = getSpdDocument(collection, testId)
+            let listener = getSpdDocument(collection, chatRoomId)
                 .addSnapshotListener { documentSnapshot, error in
                     if let document = documentSnapshot,
                        let _ = document.data()
@@ -89,10 +89,10 @@ class SignalingClient {
             candidatesCollectionExists = try await !getCandidatesCollection(collection, chatRoomId).getDocuments().isEmpty
         }
     }
-    func send(sdp rtcSdp: RTCSessionDescription, testId: String, collection: String) async throws {
+    func send(sdp rtcSdp: RTCSessionDescription, chatRoomId: String, collection: String) async throws {
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
             do {
-                try getSpdDocument(collection, testId)
+                try getSpdDocument(collection, chatRoomId)
                     .setData(
                         from: SessionDescription(from: rtcSdp)
                     ) { error in
@@ -107,10 +107,10 @@ class SignalingClient {
             }
         }
     }
-    func send(candidate rtcIceCandidate: RTCIceCandidate, testId: String, collection: String) async throws {
+    func send(candidate rtcIceCandidate: RTCIceCandidate, chatRoomId: String, collection: String) async throws {
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
             do {
-                _ = try getCandidatesCollection(collection, testId)
+                _ = try getCandidatesCollection(collection, chatRoomId)
                     .addDocument(
                         from: IceCandidate(from: rtcIceCandidate),
                         completion: { error in

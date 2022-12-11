@@ -40,7 +40,6 @@ class WebRTCClient: NSObject {
     private var peerConnection: RTCPeerConnection?
     var audioRecorder: AVAudioRecorder?
     @Published private var connectionState: RTCIceConnectionState?
-    @Published private var peerSpeaking = false
     private var candidateSubject = PassthroughSubject<RTCIceCandidate, Never>()
     private let peerConnectionSemaphore = DispatchSemaphore(value: 1)
     private let audioQueue = DispatchQueue(label: "audio")

@@ -136,7 +136,7 @@ public class WebRTCManager {
         }
         let candidateTask = Task {
             for try await candidate in webRTCClient.getCandidates() {
-                try await signalClient.send(candidate: candidate, testId: chatRoomId, collection: currentPeer.sendKey)
+                try await signalClient.send(candidate: candidate, chatRoomId: chatRoomId, collection: currentPeer.sendKey)
             }
         }
         defer {
@@ -146,24 +146,23 @@ public class WebRTCManager {
         // exchange rtc first: https://webrtc.org/getting-started/peer-connections
         try await withThrowingTaskGroup(of: Void.self) { group in
             group.addTask {
-                for try await rtcSessionDescription in  signalClient.getRTCSessionDescriptions(
+                if let rtcSessionDescription = try await signalClient.getRTCSessionDescriptions(
                     currentPeer.watchKey,
                     chatRoomId
-                ) {
+                ).first(where: { _ in true }) {
                     try await webRTCClient.set(remoteSdp: rtcSessionDescription)
                     connectionStateContainer.info = "Remote SDP set"
                     if currentPeer == .guest {
                         let sdp = try await webRTCClient.answer()
-                        try await signalClient.send(sdp: sdp, testId: chatRoomId, collection: currentPeer.sendKey)
+                        try await signalClient.send(sdp: sdp, chatRoomId: chatRoomId, collection: currentPeer.sendKey)
                         connectionStateContainer.info = "SDP answer sent"
                     }
-                    break
                 }
             }
             if currentPeer == .host {
                 group.addTask {
                     let sdp = try await webRTCClient.offer()
-                    try await signalClient.send(sdp: sdp, testId: chatRoomId, collection: currentPeer.sendKey)
+                    try await signalClient.send(sdp: sdp, chatRoomId: chatRoomId, collection: currentPeer.sendKey)
                     connectionStateContainer.info = "SDP offer sent"
                 }
             }
