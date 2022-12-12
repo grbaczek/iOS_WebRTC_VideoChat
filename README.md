@@ -21,6 +21,7 @@ Technologies used:
 
 ##Core algorithm:
 
+```mermaid
 flowchart TD
     S[Start]-->A
     A[SDP exchange] -->|SDP exchange timeout| B{Timeout?}
@@ -41,7 +42,7 @@ flowchart TD
     H -->|Check connection error|L{Error}
     L -->|Reset connection|A
     H -->M{Connected?}
- 
+ ```
 
 
 
