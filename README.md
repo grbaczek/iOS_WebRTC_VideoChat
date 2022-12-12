@@ -13,11 +13,37 @@ The project presents:
 * error handling and reliable connection reset
 
 Technologies used:
-* WebRTC
-* Swift programming language
-* Swift structured concurrency
-* SwiftUI
-* Firebase firestore
+* [WebRTC](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API)
+* [Swift programming language](https://docs.swift.org/swift-book/)
+* [Swift structured concurrency](https://docs.swift.org/swift-book/LanguageGuide/Concurrency.html)
+* [SwiftUI](https://developer.apple.com/xcode/swiftui/)
+* [Firebase firestore](https://firebase.google.com/docs/firestore)
+
+##Core algorithm:
+
+flowchart TD
+    S[Start]-->A
+    A[SDP exchange] -->|SDP exchange timeout| B{Timeout?}
+    B -->|Reset connection| A
+    A --> C{Is host?}
+    C --> D[SDP offer]
+    A -->|Wait for remote SDP| E[SDP received]
+    E --> F{Is guest?}
+    F --> G[SDP answer]
+    G --> H[SDP Exchanged]
+    D --> H
+    H -->|Candidates exchange timeout| I{Timeout?}
+    I -->|Reset connection|A
+    H -->J[Exchange candidates]
+       M -->N[Connected]
+    H -->|Check if peer data removed|K{Peer reset?}
+    K -->|Reset connection|A
+    H -->|Check connection error|L{Error}
+    L -->|Reset connection|A
+    H -->M{Connected?}
+ 
+
+
 
 ```Swift
 try await withThrowingTaskGroup(of: Void.self) { group in
@@ -87,8 +113,6 @@ try await withThrowingTaskGroup(of: Void.self) { group in
 }
 ```
 
-
-Core algorithm:
 
 
 
