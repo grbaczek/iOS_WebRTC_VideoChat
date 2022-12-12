@@ -21,7 +21,12 @@ Technologies used:
 
 ## Core algorithm
 
+Two peers connecting to each other are called: `host` and `guest`. Core algorithm consists of two main steps:
+* SDP exchange
+* ICE candidates exchange
 
+Each step has a timeout associated to it - if the step is not completed within the timeframe the whole flow is reset.
+The flow can also be reset due to peer clearing it's connection data (SDP, ICE candidates) on signaling server. Clearing connection data is done in the outer connection loop. This could happen e.g. due to connection timeout.
 
 ```mermaid
 flowchart TD
@@ -45,7 +50,9 @@ flowchart TD
     L -->|Reset connection|S
     H -->M{Connected?}
  ```
-
+ <p align = "center">
+ Co
+ </p>
 
 
 ```Swift
