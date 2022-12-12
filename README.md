@@ -19,13 +19,13 @@ Technologies used:
 * [SwiftUI](https://developer.apple.com/xcode/swiftui/)
 * [Firebase firestore](https://firebase.google.com/docs/firestore)
 
-##Core algorithm:
+## Core algorithm:
 
 ```mermaid
 flowchart TD
     S[Start]-->A
     A[SDP exchange] -->|SDP exchange timeout| B{Timeout?}
-    B -->|Reset connection| A
+    B -->|Reset connection| S
     A --> C{Is host?}
     C --> D[SDP offer]
     A -->|Wait for remote SDP| E[SDP received]
@@ -34,13 +34,13 @@ flowchart TD
     G --> H[SDP Exchanged]
     D --> H
     H -->|Candidates exchange timeout| I{Timeout?}
-    I -->|Reset connection|A
+    I -->|Reset connection|S
     H -->J[Exchange candidates]
        M -->N[Connected]
     H -->|Check if peer data removed|K{Peer reset?}
-    K -->|Reset connection|A
+    K -->|Reset connection|S
     H -->|Check connection error|L{Error}
-    L -->|Reset connection|A
+    L -->|Reset connection|S
     H -->M{Connected?}
  ```
 
