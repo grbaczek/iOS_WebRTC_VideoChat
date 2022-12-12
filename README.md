@@ -51,7 +51,7 @@ flowchart TD
     H -->M{Connected?}
  ```
  <p align = "center">
- Co
+ Implemented WebRTC connection algorithm
  </p>
 
 
@@ -122,11 +122,14 @@ try await withThrowingTaskGroup(of: Void.self) { group in
     try await group.waitForAll()
 }
 ```
+<p align = "center">
+Content of WebRTC connection loop
+</p>
 
+## Signaling server
 
+>Unfortunately, WebRTC can't create connections without some sort of server in the middle. We call this the signal channel or signaling service. It's any sort of channel of communication to exchange information before setting up a connection, whether by email, postcard, or a carrier pigeon. It's up to you.
 
-
-Firebase as signaling server
 
 ```mermaid
 sequenceDiagram
@@ -142,3 +145,6 @@ sequenceDiagram
     Guest->>Firebase: ICE candidate (Guest)
     Firebase->>Host: ICE candidate (Host)
 ```
+<p align = "center">
+Firebase as signaling server
+</p>
