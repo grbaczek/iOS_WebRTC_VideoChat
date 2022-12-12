@@ -19,7 +19,9 @@ Technologies used:
 * [SwiftUI](https://developer.apple.com/xcode/swiftui/)
 * [Firebase firestore](https://firebase.google.com/docs/firestore)
 
-## Core algorithm:
+## Core algorithm
+
+
 
 ```mermaid
 flowchart TD
