@@ -25,6 +25,10 @@ DerivedData/
 ## Obj-C/Swift specific
 *.hmap
 
+## Firebase
+
+VideoChat/GoogleService-Info.plist
+
 ## App packaging
 *.ipa
 *.dSYM.zip
