@@ -2,11 +2,11 @@
 
 This is an example implementation of iOS WebRTC video VideoChat.
 
-Establishing [WebRTC](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API) connection consists of multiple asynchronous steps where data is exchanged over the network
+Establishing [WebRTC](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API) connection consists of multiple asynchronous steps where data is exchanged over the network:
 * communication with [STUN/TURN servers](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Protocols)
 * communication with [signaling server (Firebase in this case)](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Connectivity#signaling)
 
- Error handling and connection reset is tricky and can result in [callback hell](http://callbackhell.com/)   
+ Error handling and connection reset is tricky and can result in [callback hell](http://callbackhell.com/).
 
 The project presents:
 * approach to establishing a reliable WebRTC connection every time two peers try to connect to each other.
@@ -148,3 +148,61 @@ sequenceDiagram
 <p align = "center">
 Firebase as signaling server
 </p>
+
+## Unit tests
+
+Project contains multiple unit tests:
+* `testSimultaneousConnection()`
+* `testGuestConnectingFirst()`
+* `testHostConnectingFirst()`
+* `testHostDisconnected()`
+* `testGuestDisconnected()`
+* `testRandomConnectionScheme()`
+
+```Swift
+private func simulateConnection(
+    _ chatRoomId: String,
+    guestDelaySec: Int = 0,
+    hostDelaySec: Int = 0) async
+{
+    let guestWebRTCManager = WebRTCManager()
+    let hostWebRTCManager = WebRTCManager()
+    let t = Task {
+        try await Task.sleep(nanoseconds: 1_000_000_000 * UInt64(guestDelaySec))
+        await guestWebRTCManager.retryConnect(
+            chatRoomId: chatRoomId,
+            currentPeer: WebRTCManager.peer.guest
+        )
+    }
+    let t2 = Task {
+        try await Task.sleep(nanoseconds: 1_000_000_000 * UInt64(hostDelaySec))
+        await hostWebRTCManager.retryConnect(
+            chatRoomId: chatRoomId,
+            currentPeer: WebRTCManager.peer.host
+        )
+    }
+    let t3 = Task {
+        for await connectionState in guestWebRTCManager.connectionState {
+            if connectionState == .connected {
+                t.cancel()
+                break
+            }
+        }
+    }
+    let t4 = Task {
+        for await connectionState in hostWebRTCManager.connectionState {
+            if connectionState == .connected {
+                t2.cancel()
+                break
+            }
+        }
+    }
+    await t3.value
+    await t4.value
+}
+```
+<p align = "center">
+Function used to simulate simultaneous connection
+</p>
+
+## Setup guide 

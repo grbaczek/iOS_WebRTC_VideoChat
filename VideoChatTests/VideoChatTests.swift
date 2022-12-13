@@ -105,16 +105,26 @@ final class VideoChatTests: XCTestCase {
             }
         }
     }
-    private func simulateConnection(_ chatRoomId: String, guestDelaySec: Int = 0, hostDelaySec: Int = 0) async {
+    private func simulateConnection(
+        _ chatRoomId: String,
+        guestDelaySec: Int = 0,
+        hostDelaySec: Int = 0) async
+    {
         let guestWebRTCManager = WebRTCManager()
         let hostWebRTCManager = WebRTCManager()
         let t = Task {
             try await Task.sleep(nanoseconds: 1_000_000_000 * UInt64(guestDelaySec))
-            await guestWebRTCManager.retryConnect(chatRoomId: chatRoomId, currentPeer: WebRTCManager.peer.guest)
+            await guestWebRTCManager.retryConnect(
+                chatRoomId: chatRoomId,
+                currentPeer: WebRTCManager.peer.guest
+            )
         }
         let t2 = Task {
             try await Task.sleep(nanoseconds: 1_000_000_000 * UInt64(hostDelaySec))
-            await hostWebRTCManager.retryConnect(chatRoomId: chatRoomId, currentPeer: WebRTCManager.peer.host)
+            await hostWebRTCManager.retryConnect(
+                chatRoomId: chatRoomId,
+                currentPeer: WebRTCManager.peer.host
+            )
         }
         let t3 = Task {
             for await connectionState in guestWebRTCManager.connectionState {
