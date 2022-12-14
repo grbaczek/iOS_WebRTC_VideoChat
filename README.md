@@ -35,11 +35,12 @@ flowchart TD
     B -->|Reset connection| S
     A --> C{Is host?}
     C --> D[SDP offer]
-    A -->|Wait for remote SDP| E[SDP received]
-    E --> F{Is guest?}
+    D -->|Wait for guest SDP| O(SDP received)
+    A --> E{Is guest?}
+    E -->|Wait for host SDP| F[SDP received]
     F --> G[SDP answer]
     G --> H[SDP Exchanged]
-    D --> H
+    O --> H
     H -->|Candidates exchange timeout| I{Timeout?}
     I -->|Reset connection|S
     H -->J[Exchange candidates]
@@ -143,7 +144,7 @@ sequenceDiagram
     Host->>Firebase: ICE candidate (Host)
     Firebase->>Guest: ICE candidate (Host)
     Guest->>Firebase: ICE candidate (Guest)
-    Firebase->>Host: ICE candidate (Host)
+    Firebase->>Host: ICE candidate (Guest)
 ```
 <p align = "center">
 Firebase as signaling server
@@ -205,4 +206,17 @@ private func simulateConnection(
 Function used to simulate simultaneous connection
 </p>
 
-## Setup guide 
+## Setup guide
+
+* execute `pod install` command inside the cloned `VideoChat` directory - this will install WebRTC dependency. Unoficial WebRTC CocoaPods distribution is used in this project. For production applications you should [build your own version of WebRTC library](https://webrtc.github.io/webrtc-org/native-code/ios/).
+* Create a new [Firebase project](https://firebase.google.com/)
+* Add iOS app to the newly created Firebase project
+* Download GoogleService-Info.plist and put it into VideoChat directory of the project
+* Create Cloud Firestore database (Test mode) in Firebas Console
+
+## References
+
+* WebRTC website: https://webrtc.org/
+* WebRTC source code: https://webrtc.googlesource.com/src
+* WebRTC iOS compile guide: https://webrtc.github.io/webrtc-org/native-code/ios/
+* WebRTC-iOS example: https://github.com/stasel/WebRTC-iOS   
