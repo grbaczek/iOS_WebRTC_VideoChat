@@ -2,6 +2,10 @@
 
 This is an example implementation of iOS WebRTC video VideoChat.
 
+<img src="VideoChat_diagram.svg"
+     alt="Video chat diagram"
+     style="float: left; margin-right: 10px;" />
+
 Establishing [WebRTC](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API) connection consists of multiple asynchronous steps where data is exchanged over the network:
 * communication with [STUN/TURN servers](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Protocols)
 * communication with [signaling server (Firebase in this case)](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Connectivity#signaling)
