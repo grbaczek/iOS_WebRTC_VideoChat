@@ -212,7 +212,7 @@ Function used to simulate simultaneous connection
 
 ## Setup guide
 
-* execute `pod install` command inside the cloned `VideoChat` directory - this will install WebRTC dependency. Unoficial WebRTC CocoaPods distribution is used in this project. For production applications you should [build your own version of WebRTC library](https://webrtc.github.io/webrtc-org/native-code/ios/).
+* Execute `pod install` command inside the cloned `VideoChat` directory - this will install WebRTC dependency. Unoficial WebRTC CocoaPods distribution is used in this project. For production applications you should [build your own version of WebRTC library](https://webrtc.github.io/webrtc-org/native-code/ios/).
 * Create a new [Firebase project](https://firebase.google.com/)
 * Add iOS app to the newly created Firebase project
 * Download GoogleService-Info.plist and put it into VideoChat directory of the project
