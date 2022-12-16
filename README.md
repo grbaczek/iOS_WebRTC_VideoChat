@@ -25,7 +25,7 @@ Technologies used:
 
 ## Core algorithm
 
-Two peers connecting to each other are called: `host` and `guest`. Core algorithm consists of two main steps:
+Two peers connecting to each other are called: `host` and `Task`. Core algorithm consists of two main steps:
 * SDP exchange
 * ICE candidates exchange
 
@@ -216,7 +216,7 @@ Function used to simulate simultaneous connection
 * Create a new [Firebase project](https://firebase.google.com/)
 * Add iOS app to the newly created Firebase project
 * Download GoogleService-Info.plist and put it into VideoChat directory of the project
-* Create Cloud Firestore database (Test mode) in Firebas Console
+* Create Cloud Firestore database (Test mode) in Firebase Console
 
 ## References
 
