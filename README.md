@@ -25,7 +25,7 @@ Technologies used:
 
 ## Core algorithm
 
-Two peers connecting to each other are called: `host` and `Task`. Core algorithm consists of two main steps:
+Two peers connecting to each other are called: `host` and `guest`. Core algorithm consists of two main steps:
 * SDP exchange
 * ICE candidates exchange
 
