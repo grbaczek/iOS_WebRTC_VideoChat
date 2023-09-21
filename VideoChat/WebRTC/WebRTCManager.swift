@@ -146,10 +146,10 @@ public class WebRTCManager {
         // exchange rtc first: https://webrtc.org/getting-started/peer-connections
         try await withThrowingTaskGroup(of: Void.self) { group in
             group.addTask {
-                if let rtcSessionDescription = try await signalingClient.getRTCSessionDescriptions(
+                for try await rtcSessionDescription in signalingClient.getRTCSessionDescriptions(
                     currentPeer.watchKey,
                     chatRoomId
-                ).first(where: { _ in true }) {
+                ) {
                     try await webRTCClient.set(remoteSdp: rtcSessionDescription)
                     connectionStateContainer.info = "Remote SDP set"
                     if currentPeer == .guest {
@@ -157,6 +157,7 @@ public class WebRTCManager {
                         try await signalingClient.send(sdp: sdp, chatRoomId: chatRoomId, collection: currentPeer.sendKey)
                         connectionStateContainer.info = "SDP answer sent"
                     }
+                    break
                 }
             }
             if currentPeer == .host {
@@ -167,7 +168,7 @@ public class WebRTCManager {
                 }
             }
             group.addTask {
-                for _ in 1...40 {
+                for _ in 1...120 {
                     if webRTCClient.isRemoteDescriptionSet {
                         return
                     }

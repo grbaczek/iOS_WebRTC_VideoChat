@@ -28,8 +28,7 @@ class SignalingClient {
         AsyncThrowingStream { continuation in
             let listener = getSpdDocument(collection, chatRoomId)
                 .addSnapshotListener { documentSnapshot, error in
-                    if let document = documentSnapshot,
-                       let _ = document.data()
+                    if let document = documentSnapshot, document.exists
                     {
                         do {
                             let sessionDescription: SessionDescription = try document.data(as: SessionDescription.self)

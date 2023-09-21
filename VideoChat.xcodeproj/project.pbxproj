@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B94379B8B72B7A7B8186DED /* Pods_VideoChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F084394B1E85A60EE9284E80 /* Pods_VideoChatTests.framework */; };
 		6301B150292CA5F400D38EE2 /* FirebaseKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6301B14F292CA5F400D38EE2 /* FirebaseKeys.swift */; };
 		6328FB2D292B51E600441757 /* WebRTCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6328FB2C292B51E600441757 /* WebRTCClient.swift */; };
 		6328FB2F292B51F100441757 /* SignalingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6328FB2E292B51F100441757 /* SignalingClient.swift */; };
@@ -22,11 +21,12 @@
 		63434E3A29291D3B0025E289 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 63434E3929291D3B0025E289 /* FirebaseFirestore */; };
 		63434E3C29291D3B0025E289 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 63434E3B29291D3B0025E289 /* FirebaseFirestoreSwift */; };
 		635D3C142937291A00C9479F /* RtcVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D3C132937291A00C9479F /* RtcVideoView.swift */; };
+		6374B70F2ABC9A7000045E20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6374B70E2ABC9A7000045E20 /* GoogleService-Info.plist */; };
+		6374B7102ABC9A7000045E20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6374B70E2ABC9A7000045E20 /* GoogleService-Info.plist */; };
+		6374B7112ABC9A7000045E20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6374B70E2ABC9A7000045E20 /* GoogleService-Info.plist */; };
+		637A8F252ABAC27200AFC00D /* WebRTC in Frameworks */ = {isa = PBXBuildFile; productRef = 637A8F242ABAC27200AFC00D /* WebRTC */; };
 		639D2413293487300086CAE8 /* ParticipantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639D2412293487300086CAE8 /* ParticipantViewModel.swift */; };
 		63A249D5292F4577009EE080 /* WebRTCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A249D4292F4577009EE080 /* WebRTCManager.swift */; };
-		63A5D62429388A44003D33E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63A5D62329388A44003D33E9 /* GoogleService-Info.plist */; };
-		63A5D62529388A44003D33E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63A5D62329388A44003D33E9 /* GoogleService-Info.plist */; };
-		63A5D62629388A44003D33E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63A5D62329388A44003D33E9 /* GoogleService-Info.plist */; };
 		63D24772293B7A5F0000D967 /* PickParticipantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D24771293B7A5F0000D967 /* PickParticipantView.swift */; };
 		63DF6FE729220F44003DC985 /* VideoChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF6FE629220F44003DC985 /* VideoChatApp.swift */; };
 		63DF6FE929220F44003DC985 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF6FE829220F44003DC985 /* ContentView.swift */; };
@@ -39,8 +39,6 @@
 		63F22DB1292A5983005BE0A2 /* JoinChatRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F22DB0292A5983005BE0A2 /* JoinChatRoomView.swift */; };
 		63F22DB7292AB20C005BE0A2 /* ParticipantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F22DB6292AB20C005BE0A2 /* ParticipantView.swift */; };
 		63FC49B329309A200080BAD2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 63FC49B229309A200080BAD2 /* FirebaseFirestore */; };
-		CA310065D6E9F8637C1F8DFB /* Pods_VideoChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A011279F34584F4DBA0C9D92 /* Pods_VideoChat.framework */; };
-		CF2E93C572BA9942E0DBD3C3 /* Pods_VideoChat_VideoChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35D26761F57A9A7BD5DDBAF /* Pods_VideoChat_VideoChatUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +59,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4C7AB074EC716116969E054A /* Pods-VideoChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoChat.release.xcconfig"; path = "Target Support Files/Pods-VideoChat/Pods-VideoChat.release.xcconfig"; sourceTree = "<group>"; };
 		6301B14F292CA5F400D38EE2 /* FirebaseKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseKeys.swift; sourceTree = "<group>"; };
 		6328FB2C292B51E600441757 /* WebRTCClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRTCClient.swift; sourceTree = "<group>"; };
 		6328FB2E292B51F100441757 /* SignalingClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalingClient.swift; sourceTree = "<group>"; };
@@ -71,9 +68,9 @@
 		63434E2D292913100025E289 /* VideoChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoChatRepository.swift; sourceTree = "<group>"; };
 		63434E30292918A00025E289 /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		635D3C132937291A00C9479F /* RtcVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RtcVideoView.swift; sourceTree = "<group>"; };
+		6374B70E2ABC9A7000045E20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		639D2412293487300086CAE8 /* ParticipantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantViewModel.swift; sourceTree = "<group>"; };
 		63A249D4292F4577009EE080 /* WebRTCManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRTCManager.swift; sourceTree = "<group>"; };
-		63A5D62329388A44003D33E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		63A5D62729388C90003D33E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		63D24771293B7A5F0000D967 /* PickParticipantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickParticipantView.swift; sourceTree = "<group>"; };
 		63DF6FE329220F44003DC985 /* VideoChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,14 +86,6 @@
 		63F22DAE292A591A005BE0A2 /* CreateChatRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatRoomView.swift; sourceTree = "<group>"; };
 		63F22DB0292A5983005BE0A2 /* JoinChatRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChatRoomView.swift; sourceTree = "<group>"; };
 		63F22DB6292AB20C005BE0A2 /* ParticipantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantView.swift; sourceTree = "<group>"; };
-		7B2FA7D56E17A7C61FA2EB19 /* Pods-VideoChat-VideoChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoChat-VideoChatUITests.debug.xcconfig"; path = "Target Support Files/Pods-VideoChat-VideoChatUITests/Pods-VideoChat-VideoChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		869D771D06A3FAEBD5D2F173 /* Pods-VideoChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoChatTests.release.xcconfig"; path = "Target Support Files/Pods-VideoChatTests/Pods-VideoChatTests.release.xcconfig"; sourceTree = "<group>"; };
-		9F5E7FEE937A2D5C38D4EA7A /* Pods-VideoChat-VideoChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoChat-VideoChatUITests.release.xcconfig"; path = "Target Support Files/Pods-VideoChat-VideoChatUITests/Pods-VideoChat-VideoChatUITests.release.xcconfig"; sourceTree = "<group>"; };
-		A011279F34584F4DBA0C9D92 /* Pods_VideoChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A37CC1D89AFF975D12F648C9 /* Pods-VideoChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoChatTests.debug.xcconfig"; path = "Target Support Files/Pods-VideoChatTests/Pods-VideoChatTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B35D26761F57A9A7BD5DDBAF /* Pods_VideoChat_VideoChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoChat_VideoChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3CD772669B6F6CE0B70D020 /* Pods-VideoChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoChat.debug.xcconfig"; path = "Target Support Files/Pods-VideoChat/Pods-VideoChat.debug.xcconfig"; sourceTree = "<group>"; };
-		F084394B1E85A60EE9284E80 /* Pods_VideoChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoChatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,10 +94,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				63434E3429291D3B0025E289 /* FirebaseAnalytics in Frameworks */,
+				637A8F252ABAC27200AFC00D /* WebRTC in Frameworks */,
 				63434E3829291D3B0025E289 /* FirebaseCrashlytics in Frameworks */,
 				63434E3629291D3B0025E289 /* FirebaseAuth in Frameworks */,
 				63434E3A29291D3B0025E289 /* FirebaseFirestore in Frameworks */,
-				CA310065D6E9F8637C1F8DFB /* Pods_VideoChat.framework in Frameworks */,
 				63434E3C29291D3B0025E289 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,7 +106,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B94379B8B72B7A7B8186DED /* Pods_VideoChatTests.framework in Frameworks */,
 				63FC49B329309A200080BAD2 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -126,7 +114,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF2E93C572BA9942E0DBD3C3 /* Pods_VideoChat_VideoChatUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,8 +150,6 @@
 				63DF6FF629220F44003DC985 /* VideoChatTests */,
 				63DF700029220F44003DC985 /* VideoChatUITests */,
 				63DF6FE429220F44003DC985 /* Products */,
-				D290F3382D2B6372C584F3A8 /* Pods */,
-				98A3201CAEDE4290A33902D7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -181,8 +166,8 @@
 		63DF6FE529220F44003DC985 /* VideoChat */ = {
 			isa = PBXGroup;
 			children = (
+				6374B70E2ABC9A7000045E20 /* GoogleService-Info.plist */,
 				63A5D62729388C90003D33E9 /* Info.plist */,
-				63A5D62329388A44003D33E9 /* GoogleService-Info.plist */,
 				6328FB2B292B51B300441757 /* WebRTC */,
 				63434E2F292914220025E289 /* Data */,
 				63DF6FE629220F44003DC985 /* VideoChatApp.swift */,
@@ -224,29 +209,6 @@
 			path = VideoChatUITests;
 			sourceTree = "<group>";
 		};
-		98A3201CAEDE4290A33902D7 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A011279F34584F4DBA0C9D92 /* Pods_VideoChat.framework */,
-				B35D26761F57A9A7BD5DDBAF /* Pods_VideoChat_VideoChatUITests.framework */,
-				F084394B1E85A60EE9284E80 /* Pods_VideoChatTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D290F3382D2B6372C584F3A8 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E3CD772669B6F6CE0B70D020 /* Pods-VideoChat.debug.xcconfig */,
-				4C7AB074EC716116969E054A /* Pods-VideoChat.release.xcconfig */,
-				7B2FA7D56E17A7C61FA2EB19 /* Pods-VideoChat-VideoChatUITests.debug.xcconfig */,
-				9F5E7FEE937A2D5C38D4EA7A /* Pods-VideoChat-VideoChatUITests.release.xcconfig */,
-				A37CC1D89AFF975D12F648C9 /* Pods-VideoChatTests.debug.xcconfig */,
-				869D771D06A3FAEBD5D2F173 /* Pods-VideoChatTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -254,11 +216,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63DF700729220F44003DC985 /* Build configuration list for PBXNativeTarget "VideoChat" */;
 			buildPhases = (
-				3C35525A4D778D7139EDA62F /* [CP] Check Pods Manifest.lock */,
 				63DF6FDF29220F44003DC985 /* Sources */,
 				63DF6FE029220F44003DC985 /* Frameworks */,
 				63DF6FE129220F44003DC985 /* Resources */,
-				CD5BD72A9A6FB03B1C3FC07F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -271,6 +231,7 @@
 				63434E3729291D3B0025E289 /* FirebaseCrashlytics */,
 				63434E3929291D3B0025E289 /* FirebaseFirestore */,
 				63434E3B29291D3B0025E289 /* FirebaseFirestoreSwift */,
+				637A8F242ABAC27200AFC00D /* WebRTC */,
 			);
 			productName = VideoChat;
 			productReference = 63DF6FE329220F44003DC985 /* VideoChat.app */;
@@ -280,7 +241,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63DF700A29220F44003DC985 /* Build configuration list for PBXNativeTarget "VideoChatTests" */;
 			buildPhases = (
-				21F76A05841DC1E00CFF6EBE /* [CP] Check Pods Manifest.lock */,
 				63DF6FEF29220F44003DC985 /* Sources */,
 				63DF6FF029220F44003DC985 /* Frameworks */,
 				63DF6FF129220F44003DC985 /* Resources */,
@@ -302,11 +262,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63DF700D29220F44003DC985 /* Build configuration list for PBXNativeTarget "VideoChatUITests" */;
 			buildPhases = (
-				BE439220478C89F4471B2619 /* [CP] Check Pods Manifest.lock */,
 				63DF6FF929220F44003DC985 /* Sources */,
 				63DF6FFA29220F44003DC985 /* Frameworks */,
 				63DF6FFB29220F44003DC985 /* Resources */,
-				F84302134EC70FBD8C093CEB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -352,6 +310,7 @@
 			mainGroup = 63DF6FDA29220F44003DC985;
 			packageReferences = (
 				63434E3229291D3B0025E289 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				637A8F232ABAC27200AFC00D /* XCRemoteSwiftPackageReference "WebRTC" */,
 			);
 			productRefGroup = 63DF6FE429220F44003DC985 /* Products */;
 			projectDirPath = "";
@@ -370,8 +329,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				63DF6FEE29220F44003DC985 /* Preview Assets.xcassets in Resources */,
-				63A5D62429388A44003D33E9 /* GoogleService-Info.plist in Resources */,
 				63DF6FEB29220F44003DC985 /* Assets.xcassets in Resources */,
+				6374B70F2ABC9A7000045E20 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,7 +338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63A5D62529388A44003D33E9 /* GoogleService-Info.plist in Resources */,
+				6374B7102ABC9A7000045E20 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,114 +346,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63A5D62629388A44003D33E9 /* GoogleService-Info.plist in Resources */,
+				6374B7112ABC9A7000045E20 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		21F76A05841DC1E00CFF6EBE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VideoChatTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3C35525A4D778D7139EDA62F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VideoChat-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BE439220478C89F4471B2619 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VideoChat-VideoChatUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CD5BD72A9A6FB03B1C3FC07F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VideoChat/Pods-VideoChat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VideoChat/Pods-VideoChat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VideoChat/Pods-VideoChat-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F84302134EC70FBD8C093CEB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VideoChat-VideoChatUITests/Pods-VideoChat-VideoChatUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VideoChat-VideoChatUITests/Pods-VideoChat-VideoChatUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VideoChat-VideoChatUITests/Pods-VideoChat-VideoChatUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		63DF6FDF29220F44003DC985 /* Sources */ = {
@@ -670,7 +526,6 @@
 		};
 		63DF700829220F44003DC985 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E3CD772669B6F6CE0B70D020 /* Pods-VideoChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -701,7 +556,6 @@
 		};
 		63DF700929220F44003DC985 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C7AB074EC716116969E054A /* Pods-VideoChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -732,7 +586,6 @@
 		};
 		63DF700B29220F44003DC985 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A37CC1D89AFF975D12F648C9 /* Pods-VideoChatTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -753,7 +606,6 @@
 		};
 		63DF700C29220F44003DC985 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 869D771D06A3FAEBD5D2F173 /* Pods-VideoChatTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -774,7 +626,6 @@
 		};
 		63DF700E29220F44003DC985 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7B2FA7D56E17A7C61FA2EB19 /* Pods-VideoChat-VideoChatUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -793,7 +644,6 @@
 		};
 		63DF700F29220F44003DC985 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F5E7FEE937A2D5C38D4EA7A /* Pods-VideoChat-VideoChatUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -860,6 +710,14 @@
 				kind = branch;
 			};
 		};
+		637A8F232ABAC27200AFC00D /* XCRemoteSwiftPackageReference "WebRTC" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stasel/WebRTC.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 117.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -887,6 +745,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 63434E3229291D3B0025E289 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
+		};
+		637A8F242ABAC27200AFC00D /* WebRTC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 637A8F232ABAC27200AFC00D /* XCRemoteSwiftPackageReference "WebRTC" */;
+			productName = WebRTC;
 		};
 		63FC49B229309A200080BAD2 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
