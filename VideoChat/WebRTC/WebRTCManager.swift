@@ -110,6 +110,7 @@ public class WebRTCManager {
         webRTCClient?.startCaptureLocalVideo()
     }
     private func connect(chatRoomId: String, currentPeer: peer, preConnectionCallback: (() async throws -> Void)? = nil) async throws {
+        connectionStateContainer.info = "connect called"
         webRTCClient?.closePeerConnection()
         let signalingClient = SignalingClient()
         try await signalingClient.deleteSdpAndCandidate(collection: currentPeer.sendKey, chatRoomId: chatRoomId)
@@ -177,7 +178,7 @@ public class WebRTCManager {
                 connectionStateContainer.info = "Connection timeout"
                 throw connectionError.connectionTimeoutError
             }
-            try await group.waitForAll()
+            try await group.waitForAllToCompleteOrAnyToFail()
         }
         connectionStateContainer.info = "RTC exchanged"
         try await withThrowingTaskGroup(of: Void.self) { group in
@@ -208,7 +209,7 @@ public class WebRTCManager {
                 connectionStateContainer.info = "Peer connection reset"
                 throw connectionError.connectionReset
             }
-            try await group.waitForAll()
+            try await group.waitForAllToCompleteOrAnyToFail()
         }
     }
     func muteAudio() {
@@ -231,6 +232,21 @@ public class WebRTCManager {
         #endif
     }
 }
+
+extension ThrowingTaskGroup<Void, Error> {
+    mutating func waitForAllToCompleteOrAnyToFail() async throws {
+        while !isEmpty {
+            do {
+                try await next()
+            } catch is CancellationError {
+                // we decide that cancellation errors thrown by children,
+                // should not cause cancellation of the entire group.
+                continue
+            }
+        }
+    }
+}
+
 
 extension Task where Success == Never, Failure == Never {
     static func sleep(milliseconds: UInt64) async throws {

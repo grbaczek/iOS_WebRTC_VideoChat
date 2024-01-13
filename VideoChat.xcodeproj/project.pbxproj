@@ -24,7 +24,7 @@
 		6374B70F2ABC9A7000045E20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6374B70E2ABC9A7000045E20 /* GoogleService-Info.plist */; };
 		6374B7102ABC9A7000045E20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6374B70E2ABC9A7000045E20 /* GoogleService-Info.plist */; };
 		6374B7112ABC9A7000045E20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6374B70E2ABC9A7000045E20 /* GoogleService-Info.plist */; };
-		637A8F252ABAC27200AFC00D /* WebRTC in Frameworks */ = {isa = PBXBuildFile; productRef = 637A8F242ABAC27200AFC00D /* WebRTC */; };
+		638FE5122B4FC93B002E6896 /* WebRTC in Frameworks */ = {isa = PBXBuildFile; productRef = 638FE5112B4FC93B002E6896 /* WebRTC */; };
 		639D2413293487300086CAE8 /* ParticipantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639D2412293487300086CAE8 /* ParticipantViewModel.swift */; };
 		63A249D5292F4577009EE080 /* WebRTCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A249D4292F4577009EE080 /* WebRTCManager.swift */; };
 		63D24772293B7A5F0000D967 /* PickParticipantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D24771293B7A5F0000D967 /* PickParticipantView.swift */; };
@@ -94,7 +94,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63434E3429291D3B0025E289 /* FirebaseAnalytics in Frameworks */,
-				637A8F252ABAC27200AFC00D /* WebRTC in Frameworks */,
+				638FE5122B4FC93B002E6896 /* WebRTC in Frameworks */,
 				63434E3829291D3B0025E289 /* FirebaseCrashlytics in Frameworks */,
 				63434E3629291D3B0025E289 /* FirebaseAuth in Frameworks */,
 				63434E3A29291D3B0025E289 /* FirebaseFirestore in Frameworks */,
@@ -231,7 +231,7 @@
 				63434E3729291D3B0025E289 /* FirebaseCrashlytics */,
 				63434E3929291D3B0025E289 /* FirebaseFirestore */,
 				63434E3B29291D3B0025E289 /* FirebaseFirestoreSwift */,
-				637A8F242ABAC27200AFC00D /* WebRTC */,
+				638FE5112B4FC93B002E6896 /* WebRTC */,
 			);
 			productName = VideoChat;
 			productReference = 63DF6FE329220F44003DC985 /* VideoChat.app */;
@@ -310,7 +310,7 @@
 			mainGroup = 63DF6FDA29220F44003DC985;
 			packageReferences = (
 				63434E3229291D3B0025E289 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				637A8F232ABAC27200AFC00D /* XCRemoteSwiftPackageReference "WebRTC" */,
+				638FE5102B4FC93B002E6896 /* XCRemoteSwiftPackageReference "WebRTC" */,
 			);
 			productRefGroup = 63DF6FE429220F44003DC985 /* Products */;
 			projectDirPath = "";
@@ -536,6 +536,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VideoChat/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Need camera access";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Need microphone access";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -546,7 +548,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = grzegorz.VideoChat;
+				PRODUCT_BUNDLE_IDENTIFIER = grzegorz.baczek.VideoChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -566,6 +568,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VideoChat/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Need camera access";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Need microphone access";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -576,7 +580,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = grzegorz.VideoChat;
+				PRODUCT_BUNDLE_IDENTIFIER = grzegorz.baczek.VideoChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -710,12 +714,12 @@
 				kind = branch;
 			};
 		};
-		637A8F232ABAC27200AFC00D /* XCRemoteSwiftPackageReference "WebRTC" */ = {
+		638FE5102B4FC93B002E6896 /* XCRemoteSwiftPackageReference "WebRTC" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/stasel/WebRTC.git";
+			repositoryURL = "https://github.com/stasel/WebRTC";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 117.0.0;
+				minimumVersion = 120.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -746,9 +750,9 @@
 			package = 63434E3229291D3B0025E289 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
 		};
-		637A8F242ABAC27200AFC00D /* WebRTC */ = {
+		638FE5112B4FC93B002E6896 /* WebRTC */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 637A8F232ABAC27200AFC00D /* XCRemoteSwiftPackageReference "WebRTC" */;
+			package = 638FE5102B4FC93B002E6896 /* XCRemoteSwiftPackageReference "WebRTC" */;
 			productName = WebRTC;
 		};
 		63FC49B229309A200080BAD2 /* FirebaseFirestore */ = {
