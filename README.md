@@ -217,6 +217,12 @@ Function used to simulate simultaneous connection
 * Download GoogleService-Info.plist and put it into VideoChat directory of the project
 * Create Cloud Firestore database (Test mode) in Firebase Console
 
+## Troubleshooting
+
+App crashes reporting deadlock - experienced on XCode 15, iOS 17 emulators. 
+
+There is no camera on emulator. Try running app on your phone and Mac (MacOS designed for iPad).
+
 ## References
 
 * WebRTC website: https://webrtc.org/
